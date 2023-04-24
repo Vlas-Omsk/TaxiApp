@@ -1,0 +1,45 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.SignInView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               xmlns:images="clr-namespace:TaxiApp.WindowsApp.Images"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:SignInViewModel}">
+
+    <ExtendedGrid Rows="auto,*,auto"
+                  AutoPositioning="True">
+        <ExtendedGrid Columns="auto,[24],auto"
+                      AutoPositioning="True">
+            <images:LogoImage Height="58"/>
+            <Label Content="{StaticResource SignIn}"
+                   VerticalAlignment="Center"
+                   Style="{StaticResource Header1}"/>
+        </ExtendedGrid>
+
+        <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden">
+            <ExtendedGrid Rows="[*],auto,[24],auto,[11],auto,[20],auto,[14],auto,[*],auto"
+                          AutoPositioning="True">
+                <controls:Input Placeholder="{StaticResource Login}"
+                                Text="{Binding Login}"/>
+                <controls:Input Placeholder="{StaticResource Password}"
+                                Text="{Binding Password}"/>
+                <Label Content="{Binding Error}"
+                       FontSize="13"
+                       Foreground="{StaticResource BrushForegroundInvalid}"/>
+                <Button Style="{StaticResource PrimaryButton}"
+                        Content="{StaticResource Continue}"
+                        Command="{Binding ContinueCommand}"/>
+                <Button Style="{StaticResource PrimaryButton}"
+                        Content="{StaticResource Create}"
+                        Command="{Binding CreateCommand}"/>
+                
+                <components:SettingsComponent/>
+            </ExtendedGrid>
+        </AnimatedScrollViewer>
+    </ExtendedGrid>
+</controls:View>

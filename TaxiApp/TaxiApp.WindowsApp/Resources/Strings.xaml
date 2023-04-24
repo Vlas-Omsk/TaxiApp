@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    
+    <system:String x:Key="SignIn">Вход</system:String>
+    <system:String x:Key="Login">Логин</system:String>
+    <system:String x:Key="Password">Пароль</system:String>
+    <system:String x:Key="Continue">Продолжить</system:String>
+    <system:String x:Key="Create">Создать</system:String>
+    <system:String x:Key="Settings">Настройки</system:String>
+    <system:String x:Key="Help">Помощь</system:String>
+    <system:String x:Key="Exit">Выход</system:String>
+    <system:String x:Key="SearchByGovermentNumber">Поиск по гос номеру</system:String>
+    <system:String x:Key="Cars">Автомобили</system:String>
+    <system:String x:Key="SelectTariff">Выберите тариф</system:String>
+    <system:String x:Key="EconomyTariff">Эконом</system:String>
+    <system:String x:Key="ComfortTariff">Комфорт</system:String>
+    <system:String x:Key="ComfortPlusTariff">Комфорт+</system:String>
+    <system:String x:Key="ChildrensTariff">Детский</system:String>
+    <system:String x:Key="CargoTariff">Грузовой</system:String>
+    <system:String x:Key="CourierTariff">Курьер</system:String>
+    <system:String x:Key="Drivers">Водители</system:String>
+    <system:String x:Key="SearchByFullName">Поиск по ФИО</system:String>
+    <system:String x:Key="Orders">Заказы</system:String>
+    <system:String x:Key="SearchByNumber">Поиск по номеру</system:String>
+    <system:String x:Key="ActiveDrivers">Активные водители</system:String>
+
+    <!-- FindResource calls -->
+    <system:String x:Key="Tariffs">Тарифы</system:String>
+</ResourceDictionary>

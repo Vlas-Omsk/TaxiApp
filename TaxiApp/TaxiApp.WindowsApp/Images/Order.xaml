@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="TaxiApp.WindowsApp.Images.Order"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignStyle="{StaticResource DesignStyle}">
+    
+    <Viewbox>
+        <Canvas Width="50"
+                Height="50">
+            <Path Fill="White">
+                <Path.Data>
+                    <PathGeometry Figures="M27.5 15.0003H25V7.4978H27.5V15.0003ZM15 27.5003H7.50003V25.0003H15V27.5003ZM9.9885 12.1616L15.3285 17.5016L17.0935 15.7316L11.7535 10.3941L9.9885 12.1616ZM11.7672 42.4995L9.99975 40.732L15.3397 35.392L17.1072 37.162L11.7672 42.4995ZM35 15.733L40.34 10.393L42.1075 12.1605L36.7675 17.5005L35 15.733ZM26.7947 39.9008L21.0697 22.7433L22.7297 21.0833L39.8922 26.8033L39.8747 28.8883L37.0997 31.4458L44.2672 38.6183L38.6072 44.2808L31.4372 37.1108L28.8797 39.9008H26.7947ZM36.7347 28.3833L24.1947 24.2058L28.3822 36.7458L31.3597 33.4983L38.6072 40.7458L40.7322 38.6183L33.4922 31.3733L36.7347 28.3833Z"/>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Viewbox>
+</UserControl>

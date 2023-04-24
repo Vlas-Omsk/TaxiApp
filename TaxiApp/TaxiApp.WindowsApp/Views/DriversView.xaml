@@ -1,0 +1,63 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.DriversView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}">
+
+    <controls:View.Resources>
+        <GridLength x:Key="InfoTileGap">7.5</GridLength>
+    </controls:View.Resources>
+
+    <controls:PageTemplate Title="{StaticResource Drivers}">
+        <Loader Command="{Binding LoadCommand}"
+                State="{Binding LoadingState}"
+                d:State="Loaded">
+            <ExtendedGrid Rows="auto,[10],*"
+                          AutoPositioning="True">
+                <controls:SearchInput Placeholder="{StaticResource SearchByFullName}"/>
+
+                <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden"
+                                      HorizontalScrollBarVisibility="Disabled">
+                    <ExtendedGrid Rows="*,auto"
+                                  AutoPositioning="True">
+                        <ItemsControl ItemsSource="{Binding Drivers}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ExtendedGrid Rows="[32],auto,[24],auto,[32],auto"
+                                                  AutoPositioning="True">
+                                        <ExtendedGrid Columns="*,auto"
+                                                      AutoPositioning="True">
+                                            <Label FontSize="24"
+                                                   Content="{Binding FullName}"/>
+                                        </ExtendedGrid>
+
+                                        <AnimatedScrollViewer VerticalScrollBarVisibility="Disabled"
+                                                              HorizontalScrollBarVisibility="Hidden">
+                                            <ExtendedGrid Columns="[22],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                                          AutoPositioning="True">
+                                                <controls:InfoTile Content="{Binding Status}"/>
+                                                <controls:InfoTile Content="{Binding Tariff}"/>
+                                                <controls:InfoTile Content="{Binding AdditionalInfo}"/>
+                                            </ExtendedGrid>
+                                        </AnimatedScrollViewer>
+
+                                        <Border BorderThickness="0 0 0 1"
+                                                BorderBrush="{StaticResource BrushBorderSecondary}"/>
+                                    </ExtendedGrid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <components:SettingsComponent/>
+                    </ExtendedGrid>
+                </AnimatedScrollViewer>
+            </ExtendedGrid>
+        </Loader>
+    </controls:PageTemplate>
+</controls:View>

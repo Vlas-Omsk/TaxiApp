@@ -1,0 +1,22 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.OrdersView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:OrdersViewModel}">
+
+    <controls:PageTemplate Title="{StaticResource Orders}">
+        <Loader Command="{Binding LoadCommand}"
+                State="{Binding LoadingState}"
+                d:State="Loaded">
+            <ExtendedGrid Rows="auto"
+                          AutoPositioning="True">
+                <controls:SearchInput Placeholder="{StaticResource SearchByNumber}"/>
+            </ExtendedGrid>
+        </Loader>
+    </controls:PageTemplate>
+</controls:View>

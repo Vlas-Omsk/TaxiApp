@@ -1,0 +1,4 @@
+[submodule "PinkWpf"]
+	path = PinkWpf
+	url = https://github.com/Vlas-Omsk/PinkWpf
+	branch = main2

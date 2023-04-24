@@ -1,0 +1,19 @@
+﻿<controls:Component x:Class="TaxiApp.WindowsApp.Components.NavigationComponent"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+                    xmlns:images="clr-namespace:TaxiApp.WindowsApp.Images"
+                    xmlns:componentmodels="clr-namespace:TaxiApp.WindowsApp.ComponentModels"
+                    mc:Ignorable="d" 
+                    d:DesignStyle="{StaticResource DesignStyle}"
+                    d:DataContext="{d:DesignInstance componentmodels:NavigationComponentModel}">
+
+    <ExtendedGrid Columns="auto">
+        <Button Style="{StaticResource ClearButton}"
+                Command="{Binding BackCommand}">
+            <images:Back/>
+        </Button>
+    </ExtendedGrid>
+</controls:Component>

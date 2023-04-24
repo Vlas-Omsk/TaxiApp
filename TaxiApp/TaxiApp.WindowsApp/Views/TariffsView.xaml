@@ -1,0 +1,35 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.TariffsView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:TariffsViewModel}">
+    <controls:View.Resources>
+        <GridLength x:Key="Gap">12</GridLength>
+    </controls:View.Resources>
+
+    <controls:PageTemplate Title="{StaticResource SelectTariff}">
+        <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden">
+            <ExtendedGrid Rows="*,[12],auto"
+                          AutoPositioning="True">
+                <ExtendedGrid Columns="*,[{Gap}],*"
+                              Rows="189,[{Gap}],189,[{Gap}],189"
+                              AutoPositioning="True">
+                    <controls:TariffButton Title="{StaticResource EconomyTariff}"/>
+                    <controls:TariffButton Title="{StaticResource ComfortTariff}"/>
+                    <controls:TariffButton Title="{StaticResource ComfortPlusTariff}"/>
+                    <controls:TariffButton Title="{StaticResource ChildrensTariff}"/>
+                    <controls:TariffButton Title="{StaticResource CargoTariff}"/>
+                    <controls:TariffButton Title="{StaticResource CourierTariff}"/>
+                </ExtendedGrid>
+                
+                <components:SettingsComponent ExtendedGrid.RelativeColumnSpan="2"/>
+            </ExtendedGrid>
+        </AnimatedScrollViewer>
+    </controls:PageTemplate>
+</controls:View>
