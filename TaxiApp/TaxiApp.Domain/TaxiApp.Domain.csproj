@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiApp.DAL.Abstractions\TaxiApp.DAL.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.Domain.Abstractions\TaxiApp.Domain.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

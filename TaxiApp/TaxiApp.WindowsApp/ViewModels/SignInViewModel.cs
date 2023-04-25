@@ -2,6 +2,10 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using TaxiApp.Application.Version1.Commands;
+using TaxiApp.Application.Version1.Queries;
+using TaxiApp.Client.Abstractions;
 using TaxiApp.DataTypes;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;
@@ -13,11 +17,13 @@ namespace TaxiApp.WindowsApp.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly SessionService _sessionService;
+        private readonly IClient _client;
 
-        public SignInViewModel(NavigationService navigationService, SessionService sessionService)
+        public SignInViewModel(NavigationService navigationService, SessionService sessionService, IClient client)
         {
             _navigationService = navigationService;
             _sessionService = sessionService;
+            _client = client;
         }
 
         [ObservableProperty]
@@ -30,24 +36,34 @@ namespace TaxiApp.WindowsApp.ViewModels
         private string _error;
 
         [RelayCommand]
-        private void Continue()
+        private async Task Continue()
         {
-            if (!Enum.TryParse<UserRole>(Login, true, out var userRole))
-            {
-                Error = $"Only {string.Join(", ", Enum.GetNames<UserRole>().Select(x => $"'{x}'"))} awailable as login";
+            await _client.SetAuthorization(Login, Password);
 
+            var result = await _client.Send(new GetCurrentUserQuery());
+
+            if (!result.Success)
+            {
+                Error = $"{result.Error.Type}";
                 return;
             }
 
-            _sessionService.SignIn(new User(userRole));
+            _sessionService.SignIn(new User(result.Value.Role));
 
             _navigationService.NavigateTo(new MenuView());
         }
 
         [RelayCommand]
-        private void Create()
+        private async Task Create()
         {
-            Error = "'Create' not implemented";
+            var result = await _client.Send(new CreateUserCommand(
+                Login,
+                Password,
+                UserRole.Administrator
+            ));
+
+            if (!result.Success)
+                Error = $"{result.Error.Type}";
         }
     }
 }

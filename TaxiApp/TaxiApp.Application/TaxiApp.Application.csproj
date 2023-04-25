@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiApp.Application.Abstractions\TaxiApp.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.Application.Version1\TaxiApp.Application.Version1.csproj" />
+    <ProjectReference Include="..\TaxiApp.Domain.Abstractions\TaxiApp.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.Server.Abstractions\TaxiApp.Server.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
