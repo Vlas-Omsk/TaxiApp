@@ -20,9 +20,9 @@ namespace TaxiApp.Application.Version1.Drivers.Queries.GetDrivers
                 await _driversService.GetAll(request.FilterActive)
                     .Select(x => new DriverDTO(
                         x.Id,
-                        x.LastName,
-                        x.FirstName,
-                        x.Patronymic,
+                        x.FullName.LastName,
+                        x.FullName.FirstName,
+                        x.FullName.Patronymic,
                         x.State,
                         x.TariffName
                     ))

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace TaxiApp.WindowsApp
             foreach (var type in viewModelsTypes)
                 services.AddTransient(type);
 
-            services.AddLogging();
+            services.AddLogging(x => x.AddConsole());
             services.AddDataAccess(File.ReadAllText("connectionstring.txt"));
             services.AddDomain();
             services.AddApplication();

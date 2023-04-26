@@ -1,4 +1,5 @@
-﻿using TaxiApp.DAL.Abstractions.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using TaxiApp.DAL.Abstractions;
 using TaxiApp.Domain.Abstractions.Models;
 using TaxiApp.Domain.Abstractions.Services;
 
@@ -6,23 +7,30 @@ namespace TaxiApp.Domain.Services
 {
     internal sealed class CarsService : ICarsService
     {
-        private readonly ICarsRepository _carsRepository;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public CarsService(ICarsRepository carsRepository)
+        public CarsService(IApplicationDbContext applicationDbContext)
         {
-            _carsRepository = carsRepository;
+            _applicationDbContext = applicationDbContext;
         }
 
         public IAsyncEnumerable<CarInfo> GetAllWithDriverFullName()
         {
-            return _carsRepository.GetAllWithDriverFullName()
+            return _applicationDbContext.Cars
                 .Select(x => new CarInfo(
                     x.Id,
                     x.Brand,
                     x.Number,
                     x.Color,
-                    x.DriverFullName
-                ));
+                    x.Drivers
+                        .Select(c => new FullName(
+                            c.LastName,
+                            c.FirstName,
+                            c.Patronymic
+                        ))
+                        .ToArray()
+                ))
+                .AsAsyncEnumerable();
         }
     }
 }

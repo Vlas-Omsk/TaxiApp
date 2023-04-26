@@ -1,6 +1,6 @@
-﻿namespace TaxiApp.DAL.Entities
+﻿namespace TaxiApp.DAL.Abstractions.Entities
 {
-    internal sealed class CarEntity
+    public sealed class CarEntity
     {
         public int Id { get; set; }
         public string Brand { get; set; }

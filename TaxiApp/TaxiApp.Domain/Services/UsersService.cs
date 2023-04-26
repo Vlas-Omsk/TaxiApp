@@ -1,5 +1,6 @@
-﻿using TaxiApp.DAL.Abstractions.Models;
-using TaxiApp.DAL.Abstractions.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using TaxiApp.DAL.Abstractions;
+using TaxiApp.DAL.Abstractions.Entities;
 using TaxiApp.Domain.Abstractions.Models;
 using TaxiApp.Domain.Abstractions.Services;
 
@@ -7,16 +8,17 @@ namespace TaxiApp.Domain.Services
 {
     public sealed class UsersService : IUsersService
     {
-        private readonly IUsersRepository _usersRepository;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public UsersService(IUsersRepository usersRepository)
+        public UsersService(IApplicationDbContext applicationDbContext)
         {
-            _usersRepository = usersRepository;
+            _applicationDbContext = applicationDbContext;
         }
 
         public async Task<UserInfo> Get(string login, string password)
         {
-            var user = await _usersRepository.Get(login, password);
+            var user = await _applicationDbContext.Users
+                .FirstOrDefaultAsync(x => x.Login == login && x.Password == password);
 
             if (user == null)
                 return null;
@@ -26,12 +28,14 @@ namespace TaxiApp.Domain.Services
 
         public async Task Add(User user)
         {
-            await _usersRepository.Add(new UserModel()
+            await _applicationDbContext.Users.AddAsync(new UserEntity()
             {
                 Login = user.Login,
                 Role = user.Role,
                 Password = user.Password
             });
+
+            await _applicationDbContext.SaveChangesAsync();
         }
     }
 }

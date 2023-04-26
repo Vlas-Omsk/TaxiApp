@@ -22,7 +22,7 @@ namespace TaxiApp.Application.Version1.Cars.Queries.GetCars
                     x.Brand,
                     x.Number,
                     x.Color,
-                    x.DriverFullName
+                    ""
                 ))
                 .ToArrayAsync();
 

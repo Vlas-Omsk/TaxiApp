@@ -12,17 +12,17 @@ namespace TaxiApp.WindowsApp.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly ApiService _apiService;
-        private readonly IMigrationsRunner _migrationsRunner;
+        private readonly IApplicationDbContext _applicationDbContext;
 
         public StartupViewModel(
             NavigationService navigationService,
             ApiService apiService,
-            IMigrationsRunner migrationsRunner
+            IApplicationDbContext applicationDbContext
         )
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            _migrationsRunner = migrationsRunner;
+            _applicationDbContext = applicationDbContext;
         }
 
         [ObservableProperty]
@@ -33,7 +33,7 @@ namespace TaxiApp.WindowsApp.ViewModels
         {
             LoadingStatus = "Running migrations on database";
 
-            await _migrationsRunner.Run();
+            await _applicationDbContext.Migrate();
 
             LoadingStatus = "Connecting to api";
 

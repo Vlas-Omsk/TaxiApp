@@ -1,4 +1,6 @@
-﻿using TaxiApp.DAL.Abstractions.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using TaxiApp.DAL.Abstractions;
+using TaxiApp.DAL.Abstractions.Entities;
 using TaxiApp.DataTypes;
 using TaxiApp.Domain.Abstractions.Models;
 using TaxiApp.Domain.Abstractions.Services;
@@ -7,27 +9,32 @@ namespace TaxiApp.Domain.Services
 {
     public sealed class DriversService : IDriversService
     {
-        private readonly IDriversRepository _driversRepository;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public DriversService(IDriversRepository driversRepository)
+        public DriversService(IApplicationDbContext applicationDbContext)
         {
-            _driversRepository = driversRepository;
+            _applicationDbContext = applicationDbContext;
         }
 
         public IAsyncEnumerable<DriverInfo> GetAll(bool filterActive)
         {
-            var enumerable = filterActive ?
-                _driversRepository.GetAllByState(DriverState.Active) :
-                _driversRepository.GetAll();
+            var queryable = (IQueryable<DriverEntity>)_applicationDbContext.Drivers;
 
-            return enumerable.Select(x => new DriverInfo(
-                x.Id,
-                x.LastName,
-                x.FirstName,
-                x.Patronymic,
-                x.State,
-                x.TariffName
-            ));
+            if (filterActive)
+                queryable = queryable.Where(x => x.State == DriverState.Active);
+
+            return queryable
+                .Select(x => new DriverInfo(
+                    x.Id,
+                    new FullName(
+                        x.LastName,
+                        x.FirstName,
+                        x.Patronymic
+                    ),
+                    x.State,
+                    x.Tariff.Name
+                ))
+                .AsAsyncEnumerable();
         }
     }
 }

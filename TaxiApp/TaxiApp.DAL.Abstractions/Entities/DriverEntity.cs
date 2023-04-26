@@ -1,8 +1,8 @@
 ﻿using TaxiApp.DataTypes;
 
-namespace TaxiApp.DAL.Entities
+namespace TaxiApp.DAL.Abstractions.Entities
 {
-    internal sealed class DriverEntity
+    public sealed class DriverEntity
     {
         public int Id { get; set; }
         public string LastName { get; set; }

@@ -1,8 +1,8 @@
 ﻿using TaxiApp.DataTypes;
 
-namespace TaxiApp.DAL.Abstractions.Models
+namespace TaxiApp.DAL.Abstractions.Entities
 {
-    public sealed class UserModel
+    public sealed class UserEntity
     {
         public string Login { get; set; }
         public string Password { get; set; }

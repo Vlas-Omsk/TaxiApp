@@ -1,6 +1,6 @@
-﻿namespace TaxiApp.DAL.Entities
+﻿namespace TaxiApp.DAL.Abstractions.Entities
 {
-    internal sealed class ClientEntity
+    public sealed class ClientEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

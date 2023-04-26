@@ -1,6 +1,6 @@
-﻿namespace TaxiApp.DAL.Entities
+﻿namespace TaxiApp.DAL.Abstractions.Entities
 {
-    internal sealed class OrderEntity
+    public sealed class OrderEntity
     {
         public int Id { get; set; }
         public int DriverId { get; set; }

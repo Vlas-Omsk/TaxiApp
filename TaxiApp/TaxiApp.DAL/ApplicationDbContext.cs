@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiApp.DAL.Entities;
+using TaxiApp.DAL.Abstractions;
+using TaxiApp.DAL.Abstractions.Entities;
 using TaxiApp.DataTypes;
 
 namespace TaxiApp.DAL
 {
-    public sealed class ApplicationDbContext : DbContext
+    public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public ApplicationDbContext()
         {
@@ -13,6 +14,18 @@ namespace TaxiApp.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+
+        public DbSet<CarEntity> Cars { get; set; }
+        public DbSet<ClientEntity> Clients { get; set; }
+        public DbSet<DriverEntity> Drivers { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
+        public DbSet<TariffEntity> Tariffs { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+
+        public Task Migrate()
+        {
+            return Database.MigrateAsync();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,9 +38,11 @@ namespace TaxiApp.DAL
 
                 entity.Property(e => e.Login)
                     .HasMaxLength(40);
-                entity.Property(e => e.PasswordHash)
+                entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(32);
+                    .HasConversion<PasswordConverter>()
+                    .HasMaxLength(32)
+                    .HasColumnName("PasswordHash");
                 entity.Property(e => e.Role)
                     .IsRequired()
                     .HasConversion<string>()
