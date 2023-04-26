@@ -1,6 +1,6 @@
 ﻿namespace TaxiApp.Domain.Abstractions.Models
 {
-    public sealed record CarInfo
+    public sealed class CarInfo
     {
         public CarInfo(int id,
             string brand,

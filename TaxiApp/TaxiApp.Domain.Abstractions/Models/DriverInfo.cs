@@ -2,7 +2,7 @@
 
 namespace TaxiApp.Domain.Abstractions.Models
 {
-    public sealed record DriverInfo
+    public sealed class DriverInfo
     {
         public DriverInfo(
             int id,

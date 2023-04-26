@@ -1,6 +1,6 @@
 ﻿namespace TaxiApp.Domain.Abstractions.Models
 {
-    public sealed record FullName
+    public sealed class FullName
     {
         public FullName(string lastName, string firstName, string patronymic)
         {

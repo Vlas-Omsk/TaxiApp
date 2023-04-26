@@ -1,6 +1,6 @@
 ﻿namespace TaxiApp.Application.Version1.DTO
 {
-    public sealed record CarDTO
+    public sealed class CarDTO
     {
         public CarDTO(int id,
             string brand,

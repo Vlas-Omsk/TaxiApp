@@ -2,7 +2,7 @@
 
 namespace TaxiApp.Application.Version1.DTO
 {
-    public sealed record DriverDTO
+    public sealed class DriverDTO
     {
         public DriverDTO(
             int id,

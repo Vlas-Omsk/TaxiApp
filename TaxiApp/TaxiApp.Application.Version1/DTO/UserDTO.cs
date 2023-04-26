@@ -2,7 +2,7 @@
 
 namespace TaxiApp.Application.Version1.DTO
 {
-    public sealed record UserDTO
+    public sealed class UserDTO
     {
         public UserDTO(string login, UserRole role)
         {
