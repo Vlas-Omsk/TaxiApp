@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -45,7 +46,7 @@ namespace TaxiApp.WindowsApp
                 services.AddTransient(type);
 
             services.AddLogging();
-            services.AddDataAccess("Server=192.168.1.100;Database=TaxiAppDB1;TrustServerCertificate=True;User Id=sa;Password=roooot");
+            services.AddDataAccess(File.ReadAllText("connectionstring.txt"));
             services.AddDomain();
             services.AddApplication();
             services.AddDirectClient();

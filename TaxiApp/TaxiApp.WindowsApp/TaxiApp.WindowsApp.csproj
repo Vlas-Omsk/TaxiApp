@@ -34,4 +34,10 @@
     <Resource Include="Fonts\SFProDisplay-Regular.ttf" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <None Update="connectionstring.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
