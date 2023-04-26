@@ -15,6 +15,8 @@ namespace TaxiApp.DAL
             );
             services.AddScoped<IMigrationsRunner, MigrationsRunner>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<ICarsRepository, CarsRepository>();
+            services.AddScoped<IDriversRepository, DriversRepository>();
         }
     }
 }

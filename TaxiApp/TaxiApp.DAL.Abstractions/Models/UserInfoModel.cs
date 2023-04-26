@@ -1,10 +1,10 @@
 ﻿using TaxiApp.DataTypes;
 
-namespace TaxiApp.Application.Version1.DTO
+namespace TaxiApp.DAL.Abstractions.Models
 {
-    public sealed record UserDTO
+    public sealed record UserInfoModel
     {
-        public UserDTO(string login, UserRole role)
+        public UserInfoModel(string login, UserRole role)
         {
             Login = login;
             Role = role;

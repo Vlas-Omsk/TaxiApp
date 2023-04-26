@@ -9,6 +9,8 @@ namespace TaxiApp.Domain.Extensions
         public static void AddDomain(this IServiceCollection services)
         {
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<ICarsService, CarsService>();
+            services.AddScoped<IDriversService, DriversService>();
         }
     }
 }

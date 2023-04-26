@@ -17,6 +17,7 @@
     <controls:PageTemplate Title="{StaticResource Drivers}">
         <Loader Command="{Binding LoadCommand}"
                 State="{Binding LoadingState}"
+                Status="{Binding LoadingStatus}"
                 d:State="Loaded">
             <ExtendedGrid Rows="auto,[10],*"
                           AutoPositioning="True">

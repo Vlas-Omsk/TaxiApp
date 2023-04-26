@@ -2,7 +2,7 @@
 
 namespace TaxiApp.Domain.Abstractions.Models
 {
-    public sealed class UserInfo
+    public sealed record UserInfo
     {
         public UserInfo(string login, UserRole role)
         {

@@ -10,9 +10,7 @@
                d:DesignStyle="{StaticResource DesignStyle}"
                d:DataContext="{d:DesignInstance viewmodels:StartupViewModel}">
 
-    <Loader Command="{Binding LoadCommand}">
-        <Loader.LoaderContent>
-            <images:Logo/>
-        </Loader.LoaderContent>
+    <Loader Command="{Binding LoadCommand}"
+            Status="{Binding LoadingStatus}">
     </Loader>
 </controls:View>

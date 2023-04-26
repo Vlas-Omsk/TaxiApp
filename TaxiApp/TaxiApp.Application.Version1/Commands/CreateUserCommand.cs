@@ -3,7 +3,7 @@ using TaxiApp.DataTypes;
 
 namespace TaxiApp.Application.Version1.Commands
 {
-    public sealed class CreateUserCommand : IRequest<bool>
+    public sealed record CreateUserCommand : IRequest<bool>
     {
         public CreateUserCommand(string login, string password, UserRole role)
         {

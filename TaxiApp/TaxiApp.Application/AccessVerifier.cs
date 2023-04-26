@@ -14,7 +14,7 @@ namespace TaxiApp.Application
         }
 
         public bool HasErrors => Error != null;
-        public Error Error { get; private set; }
+        public Error Error { get; set; }
 
         public async Task HasRole(params UserRole[] roles)
         {

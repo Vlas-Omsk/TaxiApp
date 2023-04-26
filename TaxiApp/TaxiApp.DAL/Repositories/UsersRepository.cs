@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
 using System.Text;
 using TaxiApp.DAL.Abstractions.Models;
@@ -17,10 +16,10 @@ namespace TaxiApp.DAL.Repositories
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<UserModel> Get(string login, string password)
+        public async Task<UserInfoModel> Get(string login, string password)
         {
             var passwordHash = ComputeHash(password);
-            var userEntity = await _applicationDbContext.Users
+            var userEntity = await _applicationDbContext.Set<UserEntity>()
                 .Where(x => 
                     x.Login == login &&
                     x.PasswordHash.SequenceEqual(passwordHash)
@@ -30,21 +29,21 @@ namespace TaxiApp.DAL.Repositories
             if (userEntity == null)
                 return null;
 
-            return new UserModel
-            {
-                Login = userEntity.Login,
-                Role = userEntity.Role,
-            };
+            return new UserInfoModel(
+                userEntity.Login,
+                userEntity.Role
+            );
         }
 
         public async Task Add(UserModel user)
         {
-            await _applicationDbContext.Users.AddAsync(new UserEntity()
-            {
-                Login = user.Login,
-                Role = user.Role,
-                PasswordHash = ComputeHash(user.Password)
-            });
+            await _applicationDbContext.Set<UserEntity>()
+                .AddAsync(new UserEntity()
+                {
+                    Login = user.Login,
+                    Role = user.Role,
+                    PasswordHash = ComputeHash(user.Password)
+                });
 
             _applicationDbContext.SaveChanges();
         }

@@ -1,42 +1,64 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PinkWpf;
+using System.Linq;
+using System.Threading.Tasks;
+using TaxiApp.Application.Version1.Queries;
 using TaxiApp.WindowsApp.Models;
+using TaxiApp.WindowsApp.Services;
 
 namespace TaxiApp.WindowsApp.ViewModels
 {
     [ViewModel]
     internal sealed partial class DriversViewModel : ObservableObject
     {
-        private bool _showActive;
+        private readonly ApiService _apiService;
+        private bool _showOnlyActive;
+
+        public DriversViewModel(ApiService apiService)
+        {
+            _apiService = apiService;
+        }
 
         public void Init(bool showOnlyActive)
         {
-            _showActive = showOnlyActive;
+            _showOnlyActive = showOnlyActive;
         }
 
         [ObservableProperty]
         private DriverModel[] _drivers;
 
         [ObservableProperty]
+        private string _loadingStatus;
+
+        [ObservableProperty]
         private LoadingState _loadingState;
 
         [RelayCommand]
-        private void Load()
+        private async Task Load()
         {
-            var drivers = new DriverModel[10];
+            LoadingState = LoadingState.Loading;
 
-            for (var i = 0; i < 10; i++)
+            var response = await _apiService.Send(new GetDriversQuery()
             {
-                drivers[i] = new DriverModel(
-                    "full name " + i,
-                    "status " + i,
-                    "tariff " + i,
-                    "additional info " + i
-                );
+                FilterActive = _showOnlyActive
+            });
+
+            if (!response.Success)
+            {
+                LoadingStatus = response.Message;
+                LoadingState = LoadingState.Failed;
+                return;
             }
 
-            Drivers = drivers;
+            Drivers = response.Value
+                .Select(x => new DriverModel(
+                    $"{x.LastName} {x.FirstName} {x.Patronymic}",
+                    x.State.ToString(),
+                    x.TariffName,
+                    null
+                ))
+                .ToArray();
 
             LoadingState = LoadingState.Loaded;
         }

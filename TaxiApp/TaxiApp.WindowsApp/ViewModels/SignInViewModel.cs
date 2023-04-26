@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using TaxiApp.Application.Version1.Commands;
 using TaxiApp.Application.Version1.Queries;
-using TaxiApp.Client.Abstractions;
 using TaxiApp.DataTypes;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;
@@ -17,13 +14,17 @@ namespace TaxiApp.WindowsApp.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly SessionService _sessionService;
-        private readonly IClient _client;
+        private readonly ApiService _apiService;
 
-        public SignInViewModel(NavigationService navigationService, SessionService sessionService, IClient client)
+        public SignInViewModel(
+            NavigationService navigationService,
+            SessionService sessionService,
+            ApiService apiService
+        )
         {
             _navigationService = navigationService;
             _sessionService = sessionService;
-            _client = client;
+            _apiService = apiService;
         }
 
         [ObservableProperty]
@@ -38,13 +39,15 @@ namespace TaxiApp.WindowsApp.ViewModels
         [RelayCommand]
         private async Task Continue()
         {
-            await _client.SetAuthorization(Login, Password);
+            await _apiService.SetAuthorization(Login, Password);
 
-            var result = await _client.Send(new GetCurrentUserQuery());
+            var result = await _apiService.Send(new GetCurrentUserQuery());
 
             if (!result.Success)
             {
-                Error = $"{result.Error.Type}";
+                await _apiService.SetAuthorization(null, null);
+
+                Error = result.Message;
                 return;
             }
 
@@ -56,14 +59,19 @@ namespace TaxiApp.WindowsApp.ViewModels
         [RelayCommand]
         private async Task Create()
         {
-            var result = await _client.Send(new CreateUserCommand(
+            var result = await _apiService.Send(new CreateUserCommand(
                 Login,
                 Password,
                 UserRole.Administrator
             ));
 
             if (!result.Success)
-                Error = $"{result.Error.Type}";
+            {
+                Error = result.Message;
+                return;
+            }
+
+            Error = "Successfully created account";
         }
     }
 }

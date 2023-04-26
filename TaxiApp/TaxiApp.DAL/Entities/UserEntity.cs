@@ -2,7 +2,7 @@
 
 namespace TaxiApp.DAL.Entities
 {
-    public sealed class UserEntity
+    internal sealed class UserEntity
     {
         public string Login { get; set; }
         public byte[] PasswordHash { get; set; }

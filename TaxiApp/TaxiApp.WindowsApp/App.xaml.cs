@@ -6,7 +6,6 @@ using System.Windows;
 using TaxiApp.Application.Extensions;
 using TaxiApp.Client.Direct;
 using TaxiApp.DAL;
-using TaxiApp.DAL.Abstractions;
 using TaxiApp.Domain.Extensions;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;
@@ -22,10 +21,6 @@ namespace TaxiApp.WindowsApp
         {
             ConfigureServices();
 
-            var migrationsRunner = ServiceProvider.GetRequiredService<IMigrationsRunner>();
-
-            migrationsRunner.Run().GetAwaiter().GetResult();
-
             var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
 
             navigationService.NavigateTo(new StartupView());
@@ -35,6 +30,7 @@ namespace TaxiApp.WindowsApp
         {
             var services = new ServiceCollection();
 
+            services.AddSingleton<ApiService>();
             services.AddSingleton<NavigationService>();
             services.AddSingleton<SessionService>();
             services.AddSingleton<ResourcesService>();
