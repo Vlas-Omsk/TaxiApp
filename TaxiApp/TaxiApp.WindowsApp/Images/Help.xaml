@@ -9,7 +9,7 @@
     <Viewbox>
         <Canvas Width="16"
                 Height="16">
-            <Path Fill="#333333"
+            <Path Fill="{DynamicResource BrushForeground}"
                   Canvas.Top="-1"
                   Canvas.Left="-1">
                 <Path.Data>

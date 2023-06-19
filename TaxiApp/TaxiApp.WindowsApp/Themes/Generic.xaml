@@ -19,7 +19,7 @@
                                  Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                         <Label Content="{TemplateBinding Placeholder}"
                                FontSize="13"
-                               Foreground="{StaticResource BrushForegroundLight}"
+                               Foreground="{DynamicResource BrushForegroundLight}"
                                IsHitTestVisible="False"
                                Margin="1 0 0 0"
                                Visibility="{TemplateBinding PlaceholderVisibility}"/>
@@ -42,7 +42,7 @@
                                                    Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
 
                         <Border BorderThickness="0 0 0 1"
-                                BorderBrush="{StaticResource BrushForeground}"/>
+                                BorderBrush="{DynamicResource BrushForeground}"/>
                     </ExtendedGrid>
                 </ControlTemplate>
             </Setter.Value>
@@ -54,7 +54,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:SearchInput">
                     <Border BorderThickness="1"
-                            BorderBrush="{StaticResource BrushBorderSecondary}"
+                            BorderBrush="{DynamicResource BrushBorderSecondary}"
                             CornerRadius="10"
                             Padding="13">
                         <ExtendedGrid Columns="*,auto"
@@ -80,9 +80,9 @@
                 <ControlTemplate TargetType="controls:InfoTile">
                     <Border CornerRadius="10"
                             Padding="{TemplateBinding Padding}"
-                            Background="{StaticResource BrushBackgroundSecondary}">
+                            Background="{DynamicResource BrushBackgroundSecondary}">
                         <ContentPresenter TextBlock.FontSize="13"
-                                          TextBlock.Foreground="{StaticResource BrushForegroundSecondary}"/>
+                                          TextBlock.Foreground="{DynamicResource BrushForegroundSecondary}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -123,7 +123,7 @@
                                             ContentTemplate="{TemplateBinding ImageTemplate}"/>
                             <Label Content="{TemplateBinding Title}"
                                    FontSize="16"
-                                   Foreground="{StaticResource BrushForegroundSecondary}"
+                                   Foreground="{DynamicResource BrushForegroundSecondary}"
                                    HorizontalContentAlignment="Center"/>
                         </ExtendedGrid>
                     </Button>

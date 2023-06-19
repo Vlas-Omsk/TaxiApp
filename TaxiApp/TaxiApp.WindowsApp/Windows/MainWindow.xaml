@@ -7,6 +7,7 @@
                          xmlns:windowmodels="clr-namespace:TaxiApp.WindowsApp.WindowModels"
                          mc:Ignorable="d"
                          Title="MainWindow"
+                         Background="{DynamicResource BrushBackground}"
                          Height="{StaticResource AppHeight}"
                          Width="{StaticResource AppWidth}"
                          d:DataContext="{d:DesignInstance windowmodels:MainWindowModel}">

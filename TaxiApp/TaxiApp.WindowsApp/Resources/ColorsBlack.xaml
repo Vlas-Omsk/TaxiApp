@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ColorForeground">#FFFFFF</Color>
+    <Color x:Key="ColorForegroundLight">#b3b3b3</Color>
+    <Color x:Key="ColorForegroundSecondary">White</Color>
+    <Color x:Key="ColorForegroundInvalid">Red</Color>
+    <Color x:Key="ColorBackground">#242424</Color>
+    <Color x:Key="ColorBackgroundSecondary">#5D5FEF</Color>
+    <Color x:Key="ColorBackgroundSecondaryMedium">#7374f1</Color>
+    <Color x:Key="ColorBackgroundSecondaryLight">#9394f4</Color>
+    <Color x:Key="ColorBorderSecondary">#C4C4C4</Color>
+    <Color x:Key="ColorText">White</Color>
+    <Color x:Key="ColorTextSecondary">White</Color>
+
+    <SolidColorBrush x:Key="BrushForeground" Color="{StaticResource ColorForeground}"/>
+    <SolidColorBrush x:Key="BrushForegroundLight" Color="{StaticResource ColorForegroundLight}"/>
+    <SolidColorBrush x:Key="BrushForegroundSecondary" Color="{StaticResource ColorForegroundSecondary}"/>
+    <SolidColorBrush x:Key="BrushForegroundInvalid" Color="{StaticResource ColorForegroundInvalid}"/>
+    <SolidColorBrush x:Key="BrushBackground" Color="{StaticResource ColorBackground}"/>
+    <SolidColorBrush x:Key="BrushBackgroundSecondary" Color="{StaticResource ColorBackgroundSecondary}"/>
+    <SolidColorBrush x:Key="BrushBackgroundSecondaryMedium" Color="{StaticResource ColorBackgroundSecondaryMedium}"/>
+    <SolidColorBrush x:Key="BrushBackgroundSecondaryLight" Color="{StaticResource ColorBackgroundSecondaryLight}"/>
+    <SolidColorBrush x:Key="BrushBorderSecondary" Color="{StaticResource ColorBorderSecondary}"/>
+    <SolidColorBrush x:Key="BrushText" Color="{StaticResource ColorText}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource ColorTextSecondary}"></SolidColorBrush>
+</ResourceDictionary>

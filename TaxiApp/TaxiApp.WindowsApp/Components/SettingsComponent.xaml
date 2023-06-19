@@ -13,7 +13,7 @@
         <Style TargetType="TextBlock"
                BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushForeground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource BrushForeground}"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
         <GridLength x:Key="ImageTextColumnGap">7</GridLength>

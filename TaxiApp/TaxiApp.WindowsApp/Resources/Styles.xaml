@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/TaxiApp.WindowsApp;component/Resources/Variables.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="DesignStyle" 
            TargetType="Control">
         <Setter Property="Background" Value="White"/>
@@ -18,14 +18,17 @@
 
     <Style TargetType="TextBox">
         <Setter Property="FontFamily" Value="pack://application:,,,/TaxiApp.WindowsApp;component/Fonts/#SF Pro Display"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushText}"/>
     </Style>
 
     <Style TargetType="Label">
         <Setter Property="Padding" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushText}"/>
     </Style>
 
     <Style TargetType="Button">
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextSecondary}"/>
     </Style>
 
     <Style TargetType="ListView">
@@ -83,7 +86,7 @@
                     <Border x:Name="Border"
                             CornerRadius="10"
                             Padding="12"
-                            Background="{StaticResource BrushBackgroundSecondary}">
+                            Background="{DynamicResource BrushBackgroundSecondary}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -96,7 +99,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
                                                                       Storyboard.TargetName="Border">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{StaticResource ColorBackgroundSecondaryMedium}"/>
+                                                                 Value="{DynamicResource ColorBackgroundSecondaryMedium}"/>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -105,7 +108,7 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
                                                                       Storyboard.TargetName="Border">
                                             <EasingColorKeyFrame KeyTime="0"
-                                                                 Value="{StaticResource ColorBackgroundSecondaryLight}" />
+                                                                 Value="{DynamicResource ColorBackgroundSecondaryLight}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -120,7 +123,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Foreground" Value="{StaticResource BrushForegroundSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushForegroundSecondary}"/>
     </Style>
 
     <Style x:Key="ClearButton"

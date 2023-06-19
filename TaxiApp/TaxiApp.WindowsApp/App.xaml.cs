@@ -23,6 +23,10 @@ namespace TaxiApp.WindowsApp
         {
             ConfigureServices();
 
+            var themeService = ServiceProvider.GetRequiredService<ThemeService>();
+
+            themeService.SetTheme(Theme.Black);
+
             var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
 
             navigationService.NavigateTo(new StartupView());
@@ -36,6 +40,7 @@ namespace TaxiApp.WindowsApp
             services.AddSingleton<NavigationService>();
             services.AddSingleton<SessionService>();
             services.AddSingleton<ResourcesService>();
+            services.AddSingleton<ThemeService>();
 
             var viewModelsTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()

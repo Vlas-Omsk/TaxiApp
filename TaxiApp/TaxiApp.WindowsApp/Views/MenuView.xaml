@@ -34,7 +34,7 @@
                                     <Label FontSize="16"
                                            Content="{Binding Name}"
                                            VerticalAlignment="Center"
-                                           Foreground="{StaticResource BrushForegroundSecondary}"/>
+                                           Foreground="{DynamicResource BrushForegroundSecondary}"/>
                                 </ExtendedGrid>
                             </Button>
                         </DataTemplate>

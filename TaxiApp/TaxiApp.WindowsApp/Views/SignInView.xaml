@@ -30,7 +30,7 @@
                                 Text="{Binding Password}"/>
                 <Label Content="{Binding Error}"
                        FontSize="13"
-                       Foreground="{StaticResource BrushForegroundInvalid}"/>
+                       Foreground="{DynamicResource BrushForegroundInvalid}"/>
                 <Button Style="{StaticResource PrimaryButton}"
                         Content="{StaticResource Continue}"
                         Command="{Binding ContinueCommand}"/>

@@ -5,24 +5,4 @@
     <system:Double x:Key="AppWidth">375</system:Double>
     <system:Double x:Key="AppHeight">812</system:Double>
     <Thickness x:Key="DefaultMargin">16</Thickness>
-
-    <Color x:Key="ColorForeground">#333333</Color>
-    <Color x:Key="ColorForegroundLight">#aa333333</Color>
-    <Color x:Key="ColorForegroundSecondary">White</Color>
-    <Color x:Key="ColorForegroundInvalid">Red</Color>
-    <Color x:Key="ColorBackground">White</Color>
-    <Color x:Key="ColorBackgroundSecondary">#5D5FEF</Color>
-    <Color x:Key="ColorBackgroundSecondaryMedium">#dd5D5FEF</Color>
-    <Color x:Key="ColorBackgroundSecondaryLight">#aa5D5FEF</Color>
-    <Color x:Key="ColorBorderSecondary">#C4C4C4</Color>
-
-    <SolidColorBrush x:Key="BrushForeground" Color="{StaticResource ColorForeground}"/>
-    <SolidColorBrush x:Key="BrushForegroundLight" Color="{StaticResource ColorForegroundLight}"/>
-    <SolidColorBrush x:Key="BrushForegroundSecondary" Color="{StaticResource ColorForegroundSecondary}"/>
-    <SolidColorBrush x:Key="BrushForegroundInvalid" Color="{StaticResource ColorForegroundInvalid}"/>
-    <SolidColorBrush x:Key="BrushBackground" Color="{StaticResource ColorBackground}"/>
-    <SolidColorBrush x:Key="BrushBackgroundSecondary" Color="{StaticResource ColorBackgroundSecondary}"/>
-    <SolidColorBrush x:Key="BrushBackgroundSecondaryMedium" Color="{StaticResource ColorBackgroundSecondaryMedium}"/>
-    <SolidColorBrush x:Key="BrushBackgroundSecondaryLight" Color="{StaticResource ColorBackgroundSecondaryLight}"/>
-    <SolidColorBrush x:Key="BrushBorderSecondary" Color="{StaticResource ColorBorderSecondary}"/>
 </ResourceDictionary>
