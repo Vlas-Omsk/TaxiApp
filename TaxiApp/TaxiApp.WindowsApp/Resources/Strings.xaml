@@ -27,4 +27,6 @@
 
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>
+    <system:String x:Key="TurnOffLight">Выключить свет</system:String>
+    <system:String x:Key="TurnOnLight">Включить свет</system:String>
 </ResourceDictionary>

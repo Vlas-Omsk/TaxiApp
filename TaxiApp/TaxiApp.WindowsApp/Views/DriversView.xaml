@@ -9,7 +9,6 @@
                mc:Ignorable="d" 
                d:DesignStyle="{StaticResource DesignStyle}"
                d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}">
-
     <controls:View.Resources>
         <GridLength x:Key="InfoTileGap">7.5</GridLength>
     </controls:View.Resources>

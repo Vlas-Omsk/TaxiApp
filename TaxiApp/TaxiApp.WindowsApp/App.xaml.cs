@@ -25,7 +25,7 @@ namespace TaxiApp.WindowsApp
 
             var themeService = ServiceProvider.GetRequiredService<ThemeService>();
 
-            themeService.SetTheme(Theme.Black);
+            themeService.SetTheme(Theme.White);
 
             var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
 

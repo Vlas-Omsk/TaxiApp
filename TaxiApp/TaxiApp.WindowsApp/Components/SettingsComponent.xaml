@@ -18,12 +18,157 @@
         </Style>
         <GridLength x:Key="ImageTextColumnGap">7</GridLength>
         <GridLength x:Key="DefaultRowGap">7</GridLength>
+        <Duration x:Key="DurationSettings">00:00:00.2</Duration>
+        <ExponentialEase x:Key="EasingFunctionSettings" EasingMode="EaseInOut"/>
+        <Style x:Key="ThemeCheckBox"
+               TargetType="CheckBox"
+               BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Style.Resources>
+                <Color x:Key="ColorUncheckedTrack">White</Color>
+                <Color x:Key="ColorUncheckedSlider">Black</Color>
+                <Color x:Key="ColorCheckedTrack">Black</Color>
+                <Color x:Key="ColorCheckedSlider">White</Color>
+
+                <SolidColorBrush x:Key="BrushUncheckedTrack" Color="{StaticResource ColorUncheckedTrack}"/>
+                <SolidColorBrush x:Key="BrushUncheckedSlider" Color="{StaticResource ColorUncheckedSlider}"/>
+                <SolidColorBrush x:Key="BrushCheckedTrack" Color="{StaticResource ColorCheckedTrack}"/>
+                <SolidColorBrush x:Key="BrushCheckedSlider" Color="{StaticResource ColorCheckedSlider}"/>
+
+                <ExponentialEase x:Key="EasingFunction" EasingMode="EaseInOut"/>
+
+                <Duration x:Key="DurationTrack">00:00:00.2</Duration>
+                <Duration x:Key="DurationSlider">00:00:00.3</Duration>
+            </Style.Resources>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Canvas Width="60"
+                                Height="36"
+                                Cursor="Hand">
+                            <Ellipse x:Name="RightCircle"
+                                        Width="36"
+                                        Height="36"
+                                        Fill="{StaticResource BrushUncheckedTrack}"/>
+                            <Ellipse x:Name="LeftCircle"
+                                        Width="36"
+                                        Height="36"
+                                        Fill="{StaticResource BrushUncheckedTrack}"
+                                        Canvas.Left="24"/>
+                            <Rectangle x:Name="Track"
+                                        Width="28"
+                                        Height="36"
+                                        Fill="{StaticResource BrushUncheckedTrack}"
+                                        Canvas.Left="16"/>
+                            <Ellipse x:Name="Slider"
+                                        Width="26"
+                                        Height="26"
+                                        Fill="{StaticResource BrushUncheckedSlider}"
+                                        Canvas.Top="5"
+                                        Canvas.Left="5"/>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Slider"
+                                                                Storyboard.TargetProperty="(Canvas.Left)"
+                                                                To="29"
+                                                                EasingFunction="{StaticResource EasingFunction}"
+                                                                Duration="{StaticResource DurationSlider}"/>
+                                            <ColorAnimation Storyboard.TargetName="RightCircle"
+                                                            Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorCheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="LeftCircle"
+                                                            Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorCheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="Track"
+                                                            Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorCheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="Slider"
+                                                            Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorCheckedSlider}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationSlider}"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Slider"
+                                                                Storyboard.TargetProperty="(Canvas.Left)"
+                                                                To="5"
+                                                                EasingFunction="{StaticResource EasingFunction}"
+                                                                Duration="{StaticResource DurationSlider}"/>
+                                            <ColorAnimation Storyboard.TargetName="RightCircle"
+                                                            Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorUncheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="LeftCircle"
+                                                            Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorUncheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="Track"
+                                                            Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorUncheckedTrack}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationTrack}"/>
+                                            <ColorAnimation Storyboard.TargetName="Slider"
+                                                            Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                            To="{StaticResource ColorUncheckedSlider}"
+                                                            EasingFunction="{StaticResource EasingFunction}"
+                                                            Duration="{StaticResource DurationSlider}"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Canvas>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ThemePopupBackground"
+               TargetType="Border">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsWhiteTheme}" Value="True">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="#F9F9F9"
+                                                Duration="{StaticResource DurationSettings}"
+                                                EasingFunction="{StaticResource EasingFunctionSettings}"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="Black"
+                                                Duration="{StaticResource DurationSettings}"
+                                                EasingFunction="{StaticResource EasingFunctionSettings}"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </controls:Component.Resources>
 
     <ExtendedGrid Rows="auto,[{}],auto,[{}],auto"
                   AutoPositioning="True">
         <Button Command="{Binding OpenSettingsCommand}"
-                Style="{StaticResource ClearButton}">
+                Style="{StaticResource ClearButton}"
+                Name="OpenSettingsButton">
             <ExtendedGrid Columns="auto,[{ImageTextColumnGap}],auto"
                           AutoPositioning="True">
                 <images:Settings/>
@@ -46,5 +191,26 @@
                 <TextBlock Text="{StaticResource Exit}"/>
             </ExtendedGrid>
         </Button>
+
+        <Popup Placement="Top"
+               PlacementTarget="{Binding ElementName=OpenSettingsButton}"
+               IsOpen="{Binding IsSettingsOpened}"
+               AllowsTransparency="True"
+               StaysOpen="False">
+            <Border x:Name="PopupBackground"
+                    Background="Black"
+                    Padding="25"
+                    CornerRadius="10"
+                    Style="{StaticResource ThemePopupBackground}">
+                <ExtendedGrid Columns="auto,[19],*"
+                              AutoPositioning="True">
+                    <CheckBox Style="{StaticResource ThemeCheckBox}"
+                              IsChecked="{Binding IsWhiteTheme}"/>
+                    <Label Style="{StaticResource Header3}"
+                           Content="{Binding ThemeText}"
+                           VerticalAlignment="Center"/>
+                </ExtendedGrid>
+            </Border>
+        </Popup>
     </ExtendedGrid>
 </controls:Component>

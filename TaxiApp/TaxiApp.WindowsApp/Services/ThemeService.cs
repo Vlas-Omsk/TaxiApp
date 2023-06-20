@@ -7,18 +7,27 @@ namespace TaxiApp.WindowsApp.Services
     {
         private ResourceDictionary _resourceDictionary;
 
+        public Theme? Theme { get; private set; }
+
+        public event EventHandler ThemeChanged;
+
         public void SetTheme(Theme theme)
         {
+            if (Theme == theme)
+                return;
+
+            Theme = theme;
+
             if (_resourceDictionary != null)
                 App.Current.Resources.MergedDictionaries.Remove(_resourceDictionary);
 
             _resourceDictionary = theme switch
             {
-                Theme.White => new ResourceDictionary()
+                WindowsApp.Theme.White => new ResourceDictionary()
                 {
                     Source = new Uri("/Resources/ColorsWhite.xaml", UriKind.RelativeOrAbsolute)
                 },
-                Theme.Black => new ResourceDictionary()
+                WindowsApp.Theme.Black => new ResourceDictionary()
                 {
                     Source = new Uri("/Resources/ColorsBlack.xaml", UriKind.RelativeOrAbsolute)
                 },
@@ -26,6 +35,8 @@ namespace TaxiApp.WindowsApp.Services
             };
 
             App.Current.Resources.MergedDictionaries.Add(_resourceDictionary);
+
+            ThemeChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

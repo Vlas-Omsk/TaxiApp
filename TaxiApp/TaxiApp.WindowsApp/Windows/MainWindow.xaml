@@ -11,7 +11,7 @@
                          Height="{StaticResource AppHeight}"
                          Width="{StaticResource AppWidth}"
                          d:DataContext="{d:DesignInstance windowmodels:MainWindowModel}">
-
+    
     <Frame Content="{Binding CurrentView}"
            NavigationUIVisibility="Hidden"
            Margin="{StaticResource DefaultMargin}"/>

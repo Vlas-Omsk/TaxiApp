@@ -1,6 +1,9 @@
 ﻿<Application x:Class="TaxiApp.WindowsApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
              StartupUri="/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -8,6 +11,7 @@
                 <ResourceDictionary Source="/Resources/Variables.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles.xaml"/>
                 <ResourceDictionary Source="/Resources/Strings.xaml"/>
+                <d:ResourceDictionary Source="/Resources/ColorsBlack.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
