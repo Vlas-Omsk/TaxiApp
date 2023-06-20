@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PinkWpf;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TaxiApp.Application.Version1.Queries;
@@ -26,13 +27,16 @@ namespace TaxiApp.WindowsApp.ViewModels
         }
 
         [ObservableProperty]
-        private DriverModel[] _drivers;
+        private FilteredCollection<DriverModel> _drivers;
 
         [ObservableProperty]
         private string _loadingStatus;
 
         [ObservableProperty]
         private LoadingState _loadingState;
+
+        [ObservableProperty]
+        private string _filter;
 
         [RelayCommand]
         private async Task Load()
@@ -51,16 +55,22 @@ namespace TaxiApp.WindowsApp.ViewModels
                 return;
             }
 
-            Drivers = response.Value
+            Drivers = new FilteredCollection<DriverModel>(response.Value
                 .Select(x => new DriverModel(
                     $"{x.LastName} {x.FirstName} {x.Patronymic}",
                     x.State.ToString(),
                     x.TariffName,
                     null
                 ))
-                .ToArray();
+                .ToArray()
+            );
 
             LoadingState = LoadingState.Loaded;
+        }
+
+        partial void OnFilterChanged(string value)
+        {
+            Drivers.Filter = x => x.FullName.Contains(value, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

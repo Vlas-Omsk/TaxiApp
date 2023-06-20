@@ -20,7 +20,8 @@
                 d:State="Loaded">
             <ExtendedGrid Rows="auto,[10],*"
                           AutoPositioning="True">
-                <controls:SearchInput Placeholder="{StaticResource SearchByGovermentNumber}"/>
+                <controls:SearchInput Placeholder="{StaticResource SearchByGovermentNumber}"
+                                      Text="{Binding Filter}"/>
 
                 <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden"
                                       HorizontalScrollBarVisibility="Disabled">

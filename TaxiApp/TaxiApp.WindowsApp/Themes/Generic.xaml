@@ -16,7 +16,7 @@
                         <TextBox x:Name="PART_Input"
                                  Style="{StaticResource ClearTextBox}"
                                  FontSize="13"
-                                 Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                 Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Content="{TemplateBinding Placeholder}"
                                FontSize="13"
                                Foreground="{DynamicResource BrushForegroundLight}"
@@ -61,7 +61,7 @@
                                       AutoPositioning="True">
                             <controls:PlaceholderInput Placeholder="{TemplateBinding Placeholder}"
                                                        VerticalAlignment="Center"
-                                                       Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                                       Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <Button Style="{StaticResource ClearButton}">
                                 <images:Search/>
