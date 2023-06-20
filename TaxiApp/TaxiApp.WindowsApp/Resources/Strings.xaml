@@ -24,6 +24,7 @@
     <system:String x:Key="Orders">Заказы</system:String>
     <system:String x:Key="SearchByNumber">Поиск по номеру</system:String>
     <system:String x:Key="ActiveDrivers">Активные водители</system:String>
+    <system:String x:Key="ToContactTechnicalSupport">Для связи с технической поддержкой</system:String>
 
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

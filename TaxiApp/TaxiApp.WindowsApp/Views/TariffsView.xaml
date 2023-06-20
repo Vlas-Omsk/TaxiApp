@@ -14,7 +14,7 @@
     </controls:View.Resources>
 
     <controls:PageTemplate Title="{StaticResource SelectTariff}">
-        <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden">
+        <AnimatedScrollViewer>
             <ExtendedGrid Rows="*,[12],auto"
                           AutoPositioning="True">
                 <ExtendedGrid Columns="*,[{Gap}],*"

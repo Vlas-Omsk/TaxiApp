@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="TaxiApp.WindowsApp.Images.Mail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignStyle="{StaticResource DesignStyle}">
+    
+    <Viewbox>
+        <Canvas Width="32"
+                Height="20">
+            <Path Fill="{DynamicResource BrushText}">
+                <Path.Data>
+                    <PathGeometry Figures="M1.44001 0.123106C1.53501 0.192336 4.52751 2.2949 8.08752 4.7949C11.65 7.2949 14.895 9.57695 15.305 9.86413C15.7125 10.1487 16.0525 10.3846 16.0625 10.3846C16.0725 10.3846 16.415 10.1513 16.8225 9.86413C17.23 9.57695 20.51 7.27439 24.1125 4.74362C27.715 2.21541 30.7075 0.112849 30.76 0.0718241L30.86 2.86102e-05H16.0625H1.26501L1.44001 0.123106Z"/>
+                </Path.Data>
+            </Path>
+            <Path Fill="{DynamicResource BrushText}">
+                <Path.Data>
+                    <PathGeometry Figures="M0.005 10.3487L0.0125 19.3205L0.08 19.4615C0.1675 19.6436 0.3475 19.8282 0.525 19.918L0.6625 19.9872H16H31.3375L31.475 19.918C31.6525 19.8282 31.8325 19.6436 31.92 19.4615L31.9875 19.3205L31.995 10.3897C31.9975 5.47949 31.995 1.46154 31.9875 1.46154C31.98 1.46154 30.615 2.41539 28.955 3.58205C27.295 4.74615 24.0825 7.00513 21.8125 8.59744C19.545 10.1923 17.4625 11.6538 17.1875 11.8462C16.9125 12.041 16.665 12.2103 16.6375 12.2231C16.61 12.2385 16.4825 12.2795 16.355 12.318C16.0575 12.4026 15.84 12.4051 15.6475 12.3256C15.57 12.2923 14.94 11.8667 14.2475 11.3795C13.555 10.8949 10.72 8.90257 7.95 6.95641C0.8825 1.99231 0.1475 1.47692 0.0675 1.42564L0 1.37949L0.005 10.3487Z"/>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Viewbox>
+</UserControl>

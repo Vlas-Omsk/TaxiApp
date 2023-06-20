@@ -141,4 +141,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="AnimatedScrollViewer"
+           BasedOn="{StaticResource {x:Type AnimatedScrollViewer}}">
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+    </Style>
 </ResourceDictionary>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TaxiApp.WindowsApp.Services;
+using TaxiApp.WindowsApp.Views;
 
 namespace TaxiApp.WindowsApp.ComponentModels
 {
@@ -9,11 +10,17 @@ namespace TaxiApp.WindowsApp.ComponentModels
     {
         private readonly ThemeService _themeService;
         private readonly ResourcesService _resourcesService;
+        private readonly NavigationService _navigationService;
 
-        public SettingsComponentModel(ThemeService themeService, ResourcesService resourcesService)
+        public SettingsComponentModel(
+            ThemeService themeService,
+            ResourcesService resourcesService,
+            NavigationService navigationService
+        )
         {
             _themeService = themeService;
             _resourcesService = resourcesService;
+            _navigationService = navigationService;
 
             _themeService.ThemeChanged += OnThemeServiceThemeChanged;
 
@@ -44,6 +51,7 @@ namespace TaxiApp.WindowsApp.ComponentModels
         [RelayCommand]
         private void OpenHelp()
         {
+            _navigationService.NavigateTo(new HelpView());
         }
 
         [RelayCommand]
