@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaxiApp.DAL.Abstractions\TaxiApp.DAL.Abstractions.csproj" />
-    <ProjectReference Include="..\TaxiApp.Domain.Abstractions\TaxiApp.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.DAL.Abstractions\TaxiApp.DAL.csproj" />
   </ItemGroup>
 
 </Project>

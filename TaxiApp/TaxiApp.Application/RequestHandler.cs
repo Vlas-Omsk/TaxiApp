@@ -2,8 +2,16 @@
 
 namespace TaxiApp.Application
 {
-    internal abstract class RequestHandler<TRequest, TResult> : IRequestHandler<TRequest> where TRequest : IRequest<TResult>
+    public abstract class RequestHandler<TRequest, TResult> : IRequestHandler<TRequest>
+        where TRequest : IRequest<TResult>
     {
+        private readonly AccessVerifierFactory _accessVerifierFactory;
+
+        protected RequestHandler(AccessVerifierFactory accessVerifierFactory)
+        {
+            _accessVerifierFactory = accessVerifierFactory;
+        }
+
         public async Task<IResponse> Execute(IRequest request)
         {
             var requestObj = (TRequest)request;
@@ -12,6 +20,21 @@ namespace TaxiApp.Application
         }
 
         protected abstract Task<Response<TResult>> ExecuteOverride(TRequest request);
+
+        public async Task<IResponse> Verify(IRequest request)
+        {
+            var requestObj = (TRequest)request;
+            var accessVerifier = _accessVerifierFactory.Create();
+
+            await VerifyOverride(requestObj, accessVerifier);
+
+            if (accessVerifier.HasErrors)
+                return Results.Fail<TResult>(accessVerifier.Error);
+
+            return null;
+        }
+
+        protected abstract Task VerifyOverride(TRequest request, AccessVerifier verifier);
 
         public static Response<TResult> Fail(Error error)
         {

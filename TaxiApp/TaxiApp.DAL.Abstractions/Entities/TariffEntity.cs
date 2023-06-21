@@ -1,4 +1,4 @@
-﻿namespace TaxiApp.DAL.Abstractions.Entities
+﻿namespace TaxiApp.DAL.Entities
 {
     public sealed class TariffEntity
     {
@@ -7,5 +7,6 @@
         public decimal StartingPrice { get; set; }
         public string Description { get; set; }
         public ICollection<DriverEntity> Drivers { get; } = new List<DriverEntity>();
+        public ICollection<CarTariffEntity> CarTariffs { get; } = new List<CarTariffEntity>();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using TaxiApp.Application.Abstractions;
 using TaxiApp.DataTypes;
 
-namespace TaxiApp.Application.Version1.Commands
+namespace TaxiApp.Application.Version1_0.Commands
 {
     public sealed class CreateUserCommand : IRequest<bool>
     {

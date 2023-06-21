@@ -1,6 +1,6 @@
 ﻿namespace TaxiApp.WindowsApp.Models
 {
-    internal sealed class DriverModel
+    public sealed class DriverModel
     {
         public DriverModel(
             string fullName,

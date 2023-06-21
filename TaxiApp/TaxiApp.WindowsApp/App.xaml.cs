@@ -6,8 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using TaxiApp.Application.Extensions;
+using TaxiApp.Application.Version1_0.Handlers;
 using TaxiApp.Client.Direct;
-using TaxiApp.DAL;
+using TaxiApp.DAL.SqlServer;
 using TaxiApp.Domain.Extensions;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;
@@ -55,6 +56,7 @@ namespace TaxiApp.WindowsApp
             services.AddDataAccess(File.ReadAllText("connectionstring.txt"));
             services.AddDomain();
             services.AddApplication();
+            services.AddApplicationVersion1_0();
             services.AddDirectClient();
 
             ServiceProvider = services.BuildServiceProvider();

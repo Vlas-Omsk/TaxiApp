@@ -2,7 +2,7 @@
 
 namespace TaxiApp.Application
 {
-    internal sealed class AccessVerifierFactory
+    public sealed class AccessVerifierFactory
     {
         private readonly IServiceProvider _serviceProvider;
 

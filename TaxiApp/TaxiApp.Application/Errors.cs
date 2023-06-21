@@ -3,9 +3,9 @@ using TaxiApp.DataTypes;
 
 namespace TaxiApp.Application
 {
-    internal static class Errors
+    public static class Errors
     {
-        internal static class Users
+        public static class Users
         {
             public static Error DoesNotHaveAccess { get; } = new(ErrorType.DoesNotHaveAccess, null);
             public static Error AnonymouseAccessNotAllowed { get; } = new(ErrorType.AnonymouseAccessNotAllowed, null);

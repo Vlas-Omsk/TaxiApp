@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaxiApp.Application.Abstractions;
-using TaxiApp.Client.Abstractions;
+using TaxiApp.Client;
 
 namespace TaxiApp.WindowsApp.Services
 {

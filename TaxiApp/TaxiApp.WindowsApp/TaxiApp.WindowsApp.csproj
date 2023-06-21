@@ -27,10 +27,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\PinkWpf\PinkWpf\PinkWpf.csproj" />
-    <ProjectReference Include="..\TaxiApp.Application.Version1\TaxiApp.Application.Version1.csproj" />
+    <ProjectReference Include="..\TaxiApp.Application.Version1\TaxiApp.Application.Version1_0.csproj" />
+    <ProjectReference Include="..\TaxiApp.Application.Version1_0.Handlers\TaxiApp.Application.Version1_0.Handlers.csproj" />
     <ProjectReference Include="..\TaxiApp.Application\TaxiApp.Application.csproj" />
     <ProjectReference Include="..\TaxiApp.Client.Direct\TaxiApp.Client.Direct.csproj" />
-    <ProjectReference Include="..\TaxiApp.DAL\TaxiApp.DAL.csproj" />
+    <ProjectReference Include="..\TaxiApp.DAL\TaxiApp.DAL.SqlServer.csproj" />
     <ProjectReference Include="..\TaxiApp.DataTypes\TaxiApp.DataTypes.csproj" />
     <ProjectReference Include="..\TaxiApp.Domain\TaxiApp.Domain.csproj" />
   </ItemGroup>

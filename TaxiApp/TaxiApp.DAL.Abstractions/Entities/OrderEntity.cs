@@ -1,4 +1,4 @@
-﻿namespace TaxiApp.DAL.Abstractions.Entities
+﻿namespace TaxiApp.DAL.Entities
 {
     public sealed class OrderEntity
     {

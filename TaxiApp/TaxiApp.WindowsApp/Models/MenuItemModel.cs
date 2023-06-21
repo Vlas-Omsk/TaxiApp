@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace TaxiApp.WindowsApp.Models
 {
-    internal sealed class MenuItemModel
+    public sealed class MenuItemModel
     {
         public MenuItemModel(UserControl image, string name, ICommand command)
         {

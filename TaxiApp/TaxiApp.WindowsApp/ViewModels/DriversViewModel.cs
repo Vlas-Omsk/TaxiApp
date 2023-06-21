@@ -4,7 +4,7 @@ using PinkWpf;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TaxiApp.Application.Version1.Queries;
+using TaxiApp.Application.Version1_0.Queries;
 using TaxiApp.WindowsApp.Models;
 using TaxiApp.WindowsApp.Services;
 

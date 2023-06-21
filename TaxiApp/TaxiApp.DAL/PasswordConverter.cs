@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace TaxiApp.DAL
+namespace TaxiApp.DAL.SqlServer
 {
     internal sealed class PasswordConverter : ValueConverter<string, byte[]>
     {

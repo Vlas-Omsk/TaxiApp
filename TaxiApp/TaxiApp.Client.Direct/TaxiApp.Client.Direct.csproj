@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaxiApp.Client.Abstractions\TaxiApp.Client.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.Client.Abstractions\TaxiApp.Client.csproj" />
     <ProjectReference Include="..\TaxiApp.Server.Abstractions\TaxiApp.Server.Abstractions.csproj" />
   </ItemGroup>
 

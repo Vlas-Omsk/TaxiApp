@@ -1,0 +1,68 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.CarView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:CarViewModel}">
+    <controls:View.Resources>
+        <GridLength x:Key="DefaultRowGap">5</GridLength>
+    </controls:View.Resources>
+
+    <controls:PageTemplate Title="{Binding GovermentNumber}">
+        <Loader Command="{Binding LoadCommand}"
+                State="{Binding LoadingState}"
+                Status="{Binding LoadingStatus}"
+                d:State="Loaded">
+            <AnimatedScrollViewer>
+                <ExtendedGrid Rows="auto,[28],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[*|18],auto,[27],auto"
+                              AutoPositioning="True">
+                    <ExtendedGrid Columns="*||200,[*],auto"
+                                  AutoPositioning="True">
+                        <ExtendedGrid x:Name="PhotoContainer"
+                                      Columns="*"
+                                      Height="{Binding ActualWidth, ElementName=PhotoContainer}">
+                            <Image/>
+                        </ExtendedGrid>
+
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="{StaticResource EditPhoto}"
+                                Command="{Binding EditPhotoCommand}"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding EditPhotoButtonVisibility}"/>
+                    </ExtendedGrid>
+
+                    <controls:Field Label="{StaticResource Color}"
+                                    IsReadOnly="{Binding IsReadOnly}"/>
+                    <controls:Field Label="{StaticResource YearOfManufacture}"
+                                    IsReadOnly="{Binding IsReadOnly}"/>
+                    <controls:Field Label="{StaticResource Brand}"
+                                    IsReadOnly="{Binding IsReadOnly}"/>
+                    <controls:Field Label="{StaticResource Model}"
+                                    IsReadOnly="{Binding IsReadOnly}"/>
+                    <controls:Field Style="{StaticResource BigField}"
+                                    Label="{StaticResource AdditionalInfo}"
+                                    IsReadOnly="{Binding IsReadOnly}"/>
+
+                    <ExtendedGrid Columns="[*],auto">
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="{StaticResource Save}"
+                                Command="{Binding SaveCommand}"
+                                Visibility="{Binding SaveButtonVisibility}"/>
+                        
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="{StaticResource Edit}"
+                                Command="{Binding EditCommand}"
+                                Visibility="{Binding EditButtonVisibility}"/>
+                    </ExtendedGrid>
+
+                    <components:SettingsComponent/>
+                </ExtendedGrid>
+            </AnimatedScrollViewer>
+        </Loader>
+    </controls:PageTemplate>
+</controls:View>

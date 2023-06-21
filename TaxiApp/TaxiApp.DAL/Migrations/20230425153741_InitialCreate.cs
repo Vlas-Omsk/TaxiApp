@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TaxiApp.DAL.Migrations
+namespace TaxiApp.DAL.SqlServer.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

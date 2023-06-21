@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiApp.DAL.Abstractions;
-using TaxiApp.DAL.Abstractions.Entities;
+using TaxiApp.DAL.Entities;
 using TaxiApp.DataTypes;
 
-namespace TaxiApp.DAL
+namespace TaxiApp.DAL.SqlServer
 {
-    public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
+    public sealed class ApplicationDbContext : DAL.ApplicationDbContext
     {
         public ApplicationDbContext()
         {
@@ -16,14 +15,7 @@ namespace TaxiApp.DAL
         {
         }
 
-        public DbSet<CarEntity> Cars { get; set; }
-        public DbSet<ClientEntity> Clients { get; set; }
-        public DbSet<DriverEntity> Drivers { get; set; }
-        public DbSet<OrderEntity> Orders { get; set; }
-        public DbSet<TariffEntity> Tariffs { get; set; }
-        public DbSet<UserEntity> Users { get; set; }
-
-        public Task Migrate()
+        public override Task Migrate()
         {
             return Database.MigrateAsync();
         }
@@ -111,6 +103,21 @@ namespace TaxiApp.DAL
                 entity.Property(e => e.Color)
                     .HasMaxLength(40)
                     .IsRequired();
+            });
+
+            modelBuilder.Entity<CarTariffEntity>(entity =>
+            {
+                entity.HasKey(e => new { e.CarId, e.TariffId }).HasName("PK_CarTariffCarIdTariffId");
+
+                entity.ToTable("CarTariff");
+
+                entity.HasOne(d => d.Car).WithMany(p => p.CarTariffs)
+                    .HasForeignKey(d => d.CarId)
+                    .HasConstraintName("FK_CarTariffCarId_CarId");
+
+                entity.HasOne(d => d.Tariff).WithMany(p => p.CarTariffs)
+                    .HasForeignKey(d => d.TariffId)
+                    .HasConstraintName("FK_CarTariffTariffId_TariffId");
             });
 
             modelBuilder.Entity<OrderEntity>(entity =>

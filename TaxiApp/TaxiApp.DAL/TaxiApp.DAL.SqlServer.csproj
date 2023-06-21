@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaxiApp.DAL.Abstractions\TaxiApp.DAL.Abstractions.csproj" />
+    <ProjectReference Include="..\TaxiApp.DAL.Abstractions\TaxiApp.DAL.csproj" />
     <ProjectReference Include="..\TaxiApp.DataTypes\TaxiApp.DataTypes.csproj" />
   </ItemGroup>
 

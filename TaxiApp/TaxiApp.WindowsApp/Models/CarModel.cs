@@ -1,8 +1,9 @@
 ﻿namespace TaxiApp.WindowsApp.Models
 {
-    internal sealed class CarModel
+    public sealed class CarModel
     {
         public CarModel(
+            int id,
             string govermentNumber,
             string driverFullName,
             string model,
@@ -10,6 +11,7 @@
             string additionalInfo
         )
         {
+            Id = id;
             GovermentNumber = govermentNumber;
             DriverFullName = driverFullName;
             Model = model;
@@ -17,6 +19,7 @@
             AdditionalInfo = additionalInfo;
         }
 
+        public int Id { get; }
         public string GovermentNumber { get; }
         public string DriverFullName { get; }
         public string Model { get; }

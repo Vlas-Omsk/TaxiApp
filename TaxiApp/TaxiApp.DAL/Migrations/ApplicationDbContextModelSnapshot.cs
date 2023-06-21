@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TaxiApp.DAL;
+using TaxiApp.DAL.SqlServer;
 
 #nullable disable
 
-namespace TaxiApp.DAL.Migrations
+namespace TaxiApp.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace TaxiApp.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.CarEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.CarEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,6 +40,9 @@ namespace TaxiApp.DAL.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<string>("Model")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -51,7 +54,23 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("Car", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.ClientEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.CarTariffEntity", b =>
+                {
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TariffId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CarId", "TariffId")
+                        .HasName("PK_CarTariffCarIdTariffId");
+
+                    b.HasIndex("TariffId");
+
+                    b.ToTable("CarTariff", (string)null);
+                });
+
+            modelBuilder.Entity("TaxiApp.DAL.Entities.ClientEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +94,7 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("Client", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.DriverEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.DriverEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +139,7 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("Driver", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.OrderEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.OrderEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,7 +180,7 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("Order", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.TariffEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.TariffEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -186,7 +205,7 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("Tariff", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.UserEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Login")
                         .HasMaxLength(40)
@@ -209,16 +228,37 @@ namespace TaxiApp.DAL.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.DriverEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.CarTariffEntity", b =>
                 {
-                    b.HasOne("TaxiApp.DAL.Abstractions.Entities.CarEntity", "Car")
+                    b.HasOne("TaxiApp.DAL.Entities.CarEntity", "Car")
+                        .WithMany("CarTariffs")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_CarTariffCarId_CarId");
+
+                    b.HasOne("TaxiApp.DAL.Entities.TariffEntity", "Tariff")
+                        .WithMany("CarTariffs")
+                        .HasForeignKey("TariffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_CarTariffTariffId_TariffId");
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Tariff");
+                });
+
+            modelBuilder.Entity("TaxiApp.DAL.Entities.DriverEntity", b =>
+                {
+                    b.HasOne("TaxiApp.DAL.Entities.CarEntity", "Car")
                         .WithMany("Drivers")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_DriverCarId_CarId");
 
-                    b.HasOne("TaxiApp.DAL.Abstractions.Entities.TariffEntity", "Tariff")
+                    b.HasOne("TaxiApp.DAL.Entities.TariffEntity", "Tariff")
                         .WithMany("Drivers")
                         .HasForeignKey("TariffId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -230,16 +270,16 @@ namespace TaxiApp.DAL.Migrations
                     b.Navigation("Tariff");
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.OrderEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.OrderEntity", b =>
                 {
-                    b.HasOne("TaxiApp.DAL.Abstractions.Entities.ClientEntity", "Client")
+                    b.HasOne("TaxiApp.DAL.Entities.ClientEntity", "Client")
                         .WithMany("Orders")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_OrderClientId_ClientId");
 
-                    b.HasOne("TaxiApp.DAL.Abstractions.Entities.DriverEntity", "Driver")
+                    b.HasOne("TaxiApp.DAL.Entities.DriverEntity", "Driver")
                         .WithMany("Orders")
                         .HasForeignKey("DriverId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -251,23 +291,27 @@ namespace TaxiApp.DAL.Migrations
                     b.Navigation("Driver");
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.CarEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.CarEntity", b =>
                 {
+                    b.Navigation("CarTariffs");
+
                     b.Navigation("Drivers");
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.ClientEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.ClientEntity", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.DriverEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.DriverEntity", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("TaxiApp.DAL.Abstractions.Entities.TariffEntity", b =>
+            modelBuilder.Entity("TaxiApp.DAL.Entities.TariffEntity", b =>
                 {
+                    b.Navigation("CarTariffs");
+
                     b.Navigation("Drivers");
                 });
 #pragma warning restore 612, 618

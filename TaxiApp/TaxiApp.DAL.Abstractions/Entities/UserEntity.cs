@@ -1,6 +1,6 @@
 ﻿using TaxiApp.DataTypes;
 
-namespace TaxiApp.DAL.Abstractions.Entities
+namespace TaxiApp.DAL.Entities
 {
     public sealed class UserEntity
     {

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaxiApp.DataTypes\TaxiApp.DataTypes.csproj" />
+    <ProjectReference Include="..\TaxiApp.Application\TaxiApp.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,8 +8,7 @@
                xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
                xmlns:images="clr-namespace:TaxiApp.WindowsApp.Images"
                mc:Ignorable="d" 
-               d:DesignStyle="{StaticResource DesignStyle}"
-               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}">
+               d:DesignStyle="{StaticResource DesignStyle}">
 
     <controls:PageTemplate>
         <AnimatedScrollViewer>

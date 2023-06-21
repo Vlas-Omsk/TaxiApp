@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
-using TaxiApp.DAL.Abstractions;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;
 
@@ -12,17 +11,14 @@ namespace TaxiApp.WindowsApp.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly ApiService _apiService;
-        private readonly IApplicationDbContext _applicationDbContext;
 
         public StartupViewModel(
             NavigationService navigationService,
-            ApiService apiService,
-            IApplicationDbContext applicationDbContext
+            ApiService apiService
         )
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            _applicationDbContext = applicationDbContext;
         }
 
         [ObservableProperty]
@@ -31,10 +27,6 @@ namespace TaxiApp.WindowsApp.ViewModels
         [RelayCommand]
         private async Task Load()
         {
-            LoadingStatus = "Running migrations on database";
-
-            await _applicationDbContext.Migrate();
-
             LoadingStatus = "Connecting to api";
 
             await _apiService.Connect();

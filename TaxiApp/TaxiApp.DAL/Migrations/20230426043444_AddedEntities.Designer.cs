@@ -9,7 +9,7 @@ using TaxiApp.DAL;
 
 #nullable disable
 
-namespace TaxiApp.DAL.Migrations
+namespace TaxiApp.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230426043444_AddedEntities")]

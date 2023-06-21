@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TaxiApp.Application.Abstractions;
-using TaxiApp.Client.Abstractions;
 
 namespace TaxiApp.Client.Direct
 {
@@ -28,11 +27,14 @@ namespace TaxiApp.Client.Direct
             return Task.CompletedTask;
         }
 
-        public Task Connect()
+        public async Task Connect()
         {
-            IsConnected = true;
+            using var scope = _serviceProvider.CreateScope();
+            var applicationDbContextAccessor = scope.ServiceProvider.GetRequiredService<IApplicationDbContextAccessor>();
 
-            return Task.CompletedTask;
+            await applicationDbContextAccessor.Migrate();
+
+            IsConnected = true;
         }
 
         public async Task<Response<TResult>> Send<TResult>(IRequest<TResult> request)

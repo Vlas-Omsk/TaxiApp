@@ -4,7 +4,7 @@ using TaxiApp.DataTypes;
 
 namespace TaxiApp.Application
 {
-    internal sealed class AccessVerifier
+    public sealed class AccessVerifier
     {
         private readonly SecurityService _securityService;
 
@@ -21,7 +21,7 @@ namespace TaxiApp.Application
             if (HasErrors)
                 return;
 
-            var userInfo = await _securityService.GetCurrentUserInfo();
+            var userInfo = await _securityService.GetCurrentUser();
 
             if (!roles.Any(x => x == userInfo.Role))
                 Error = Errors.Users.DoesNotHaveAccess;
@@ -32,7 +32,7 @@ namespace TaxiApp.Application
             if (HasErrors)
                 return;
 
-            var userInfo = await _securityService.GetCurrentUserInfo();
+            var userInfo = await _securityService.GetCurrentUser();
 
             if (userInfo == null)
                 Error = Errors.Users.AnonymouseAccessNotAllowed;
@@ -43,7 +43,7 @@ namespace TaxiApp.Application
             if (HasErrors)
                 return;
 
-            var userInfo = await _securityService.GetCurrentUserInfo();
+            var userInfo = await _securityService.GetCurrentUser();
 
             if (userInfo.Login == userLogin)
                 Error = Errors.Users.UnableToChangeCurrentEmployee;

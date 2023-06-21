@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TaxiApp.DAL.Abstractions;
-using TaxiApp.Domain.Abstractions.Models;
-using TaxiApp.Domain.Abstractions.Services;
+﻿using TaxiApp.DAL;
+using TaxiApp.DAL.Entities;
 
 namespace TaxiApp.Domain.Services
 {
-    internal sealed class CarsService : ICarsService
+    public sealed class CarsService
     {
         private readonly IApplicationDbContext _applicationDbContext;
 
@@ -14,23 +12,9 @@ namespace TaxiApp.Domain.Services
             _applicationDbContext = applicationDbContext;
         }
 
-        public IAsyncEnumerable<CarInfo> GetAllWithDriverFullName()
+        public IQueryable<CarEntity> GetAll()
         {
-            return _applicationDbContext.Cars
-                .Select(x => new CarInfo(
-                    x.Id,
-                    x.Brand,
-                    x.Number,
-                    x.Color,
-                    x.Drivers
-                        .Select(c => new FullName(
-                            c.LastName,
-                            c.FirstName,
-                            c.Patronymic
-                        ))
-                        .ToArray()
-                ))
-                .AsAsyncEnumerable();
+            return _applicationDbContext.Cars;
         }
     }
 }

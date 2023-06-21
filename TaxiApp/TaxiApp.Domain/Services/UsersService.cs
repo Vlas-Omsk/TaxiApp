@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiApp.DAL.Abstractions;
-using TaxiApp.DAL.Abstractions.Entities;
-using TaxiApp.Domain.Abstractions.Models;
-using TaxiApp.Domain.Abstractions.Services;
+using TaxiApp.DAL;
+using TaxiApp.DAL.Entities;
+using TaxiApp.DataTypes;
+using TaxiApp.Domain.Models;
 
 namespace TaxiApp.Domain.Services
 {
-    public sealed class UsersService : IUsersService
+    public sealed class UsersService
     {
         private readonly IApplicationDbContext _applicationDbContext;
 
@@ -15,7 +15,7 @@ namespace TaxiApp.Domain.Services
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<UserInfo> Get(string login, string password)
+        public async Task<User> Get(string login, string password)
         {
             var user = await _applicationDbContext.Users
                 .FirstOrDefaultAsync(x => x.Login == login && x.Password == password);
@@ -23,18 +23,21 @@ namespace TaxiApp.Domain.Services
             if (user == null)
                 return null;
 
-            return new UserInfo(user.Login, user.Role);
+            return new User(user.Login, user.Role);
         }
 
-        public async Task Add(User user)
+        public async Task Add(
+            string login,
+            string password,
+            UserRole role
+        )
         {
             await _applicationDbContext.Users.AddAsync(new UserEntity()
             {
-                Login = user.Login,
-                Role = user.Role,
-                Password = user.Password
+                Login = login,
+                Password = password,
+                Role = role,
             });
-
             await _applicationDbContext.SaveChangesAsync();
         }
     }

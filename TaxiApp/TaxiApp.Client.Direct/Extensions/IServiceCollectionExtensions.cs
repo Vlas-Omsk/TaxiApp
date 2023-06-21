@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TaxiApp.Client.Abstractions;
 using TaxiApp.Server.Abstractions;
 
 namespace TaxiApp.Client.Direct

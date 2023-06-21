@@ -138,4 +138,25 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="controls:Field">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Field">
+                    <ExtendedGrid Columns="auto,[5],*"
+                                  AutoPositioning="True">
+                        <Label FontSize="20">
+                            <TextBlock>
+                                <Run Text="{TemplateBinding Label}"/>:
+                            </TextBlock>
+                        </Label>
+
+                        <TextBox Style="{StaticResource UnderlinedTextBox}"
+                                 Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                    </ExtendedGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -9,37 +9,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.WindowsApp", "TaxiA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkWpf", "..\PinkWpf\PinkWpf\PinkWpf.csproj", "{3D07275E-BE95-4F0B-8B36-3DD7FC469FBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.DAL", "TaxiApp.DAL\TaxiApp.DAL.csproj", "{8A65FD8F-AD8B-492F-B01B-67E11C916D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.DAL.SqlServer", "TaxiApp.DAL\TaxiApp.DAL.SqlServer.csproj", "{8A65FD8F-AD8B-492F-B01B-67E11C916D0D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.DataTypes", "TaxiApp.DataTypes\TaxiApp.DataTypes.csproj", "{6965B81D-7200-401E-B4CE-2640DD82980E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiApp.DAL", "TaxiApp.DAL", "{B9B2DCE8-C6C5-4654-87AE-AF248155C3B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.DAL.Abstractions", "TaxiApp.DAL.Abstractions\TaxiApp.DAL.Abstractions.csproj", "{E07D050D-7D32-499C-8831-6E52866EF157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.DAL", "TaxiApp.DAL.Abstractions\TaxiApp.DAL.csproj", "{E07D050D-7D32-499C-8831-6E52866EF157}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiApp.Domain", "TaxiApp.Domain", "{9524E151-2E81-4813-A9DB-DDEFD1316C3A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Domain", "TaxiApp.Domain\TaxiApp.Domain.csproj", "{17CD969C-ACEC-41BB-B78A-2A9FE6169065}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Domain.Abstractions", "TaxiApp.Domain.Abstractions\TaxiApp.Domain.Abstractions.csproj", "{19BDB879-8F50-44FF-A327-77F5FC0CDAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Domain", "TaxiApp.Domain\TaxiApp.Domain.csproj", "{17CD969C-ACEC-41BB-B78A-2A9FE6169065}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiApp.Application", "TaxiApp.Application", "{2CE2A035-3A74-4458-8DC5-7771E42BE818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Application", "TaxiApp.Application\TaxiApp.Application.csproj", "{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Application", "TaxiApp.Application\TaxiApp.Application.csproj", "{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Application.Abstractions", "TaxiApp.Application.Abstractions\TaxiApp.Application.Abstractions.csproj", "{C1302826-823A-4A8C-9187-A8063BFA30AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Application.Abstractions", "TaxiApp.Application.Abstractions\TaxiApp.Application.Abstractions.csproj", "{C1302826-823A-4A8C-9187-A8063BFA30AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Application.Version1", "TaxiApp.Application.Version1\TaxiApp.Application.Version1.csproj", "{8467BA54-798E-421E-95E3-3CA6DBE42512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Application.Version1_0", "TaxiApp.Application.Version1\TaxiApp.Application.Version1_0.csproj", "{8467BA54-798E-421E-95E3-3CA6DBE42512}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiApp.Server", "TaxiApp.Server", "{84FA05A6-81DC-4EBD-AFD0-7FFB6E456149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Server.Abstractions", "TaxiApp.Server.Abstractions\TaxiApp.Server.Abstractions.csproj", "{705CB401-5BB0-4068-B84B-57E5B32460D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Server.Abstractions", "TaxiApp.Server.Abstractions\TaxiApp.Server.Abstractions.csproj", "{705CB401-5BB0-4068-B84B-57E5B32460D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiApp.Client", "TaxiApp.Client", "{BC91720C-8CB2-487D-87FD-91A15A70524C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Client.Abstractions", "TaxiApp.Client.Abstractions\TaxiApp.Client.Abstractions.csproj", "{3C6733CC-858C-41DA-8E78-393DC7E23E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Client", "TaxiApp.Client.Abstractions\TaxiApp.Client.csproj", "{3C6733CC-858C-41DA-8E78-393DC7E23E98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApp.Client.Direct", "TaxiApp.Client.Direct\TaxiApp.Client.Direct.csproj", "{2E697A6F-6FD1-43A7-8256-45820250ABB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Client.Direct", "TaxiApp.Client.Direct\TaxiApp.Client.Direct.csproj", "{2E697A6F-6FD1-43A7-8256-45820250ABB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiApp.Application.Version1_0.Handlers", "TaxiApp.Application.Version1_0.Handlers\TaxiApp.Application.Version1_0.Handlers.csproj", "{C30A295F-9004-48A0-9FF2-F33F4FA5DC01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +73,6 @@ Global
 		{17CD969C-ACEC-41BB-B78A-2A9FE6169065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17CD969C-ACEC-41BB-B78A-2A9FE6169065}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17CD969C-ACEC-41BB-B78A-2A9FE6169065}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19BDB879-8F50-44FF-A327-77F5FC0CDAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19BDB879-8F50-44FF-A327-77F5FC0CDAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19BDB879-8F50-44FF-A327-77F5FC0CDAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19BDB879-8F50-44FF-A327-77F5FC0CDAAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -103,6 +97,10 @@ Global
 		{2E697A6F-6FD1-43A7-8256-45820250ABB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E697A6F-6FD1-43A7-8256-45820250ABB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E697A6F-6FD1-43A7-8256-45820250ABB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30A295F-9004-48A0-9FF2-F33F4FA5DC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30A295F-9004-48A0-9FF2-F33F4FA5DC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30A295F-9004-48A0-9FF2-F33F4FA5DC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30A295F-9004-48A0-9FF2-F33F4FA5DC01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,14 +108,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8A65FD8F-AD8B-492F-B01B-67E11C916D0D} = {B9B2DCE8-C6C5-4654-87AE-AF248155C3B1}
 		{E07D050D-7D32-499C-8831-6E52866EF157} = {B9B2DCE8-C6C5-4654-87AE-AF248155C3B1}
-		{17CD969C-ACEC-41BB-B78A-2A9FE6169065} = {9524E151-2E81-4813-A9DB-DDEFD1316C3A}
-		{19BDB879-8F50-44FF-A327-77F5FC0CDAAC} = {9524E151-2E81-4813-A9DB-DDEFD1316C3A}
 		{237DC2A3-3F73-45C7-8ED6-B7317D4B8CDF} = {2CE2A035-3A74-4458-8DC5-7771E42BE818}
 		{C1302826-823A-4A8C-9187-A8063BFA30AA} = {2CE2A035-3A74-4458-8DC5-7771E42BE818}
 		{8467BA54-798E-421E-95E3-3CA6DBE42512} = {2CE2A035-3A74-4458-8DC5-7771E42BE818}
 		{705CB401-5BB0-4068-B84B-57E5B32460D1} = {84FA05A6-81DC-4EBD-AFD0-7FFB6E456149}
 		{3C6733CC-858C-41DA-8E78-393DC7E23E98} = {BC91720C-8CB2-487D-87FD-91A15A70524C}
 		{2E697A6F-6FD1-43A7-8256-45820250ABB7} = {BC91720C-8CB2-487D-87FD-91A15A70524C}
+		{C30A295F-9004-48A0-9FF2-F33F4FA5DC01} = {2CE2A035-3A74-4458-8DC5-7771E42BE818}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE97E3C3-8E54-4ADC-86E2-ECC0EC2A09F4}

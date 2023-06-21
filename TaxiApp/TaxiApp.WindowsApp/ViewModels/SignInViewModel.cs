@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
-using TaxiApp.Application.Version1.Commands;
-using TaxiApp.Application.Version1.Queries;
+using TaxiApp.Application.Version1_0.Commands;
+using TaxiApp.Application.Version1_0.Queries;
 using TaxiApp.DataTypes;
 using TaxiApp.WindowsApp.Services;
 using TaxiApp.WindowsApp.Views;

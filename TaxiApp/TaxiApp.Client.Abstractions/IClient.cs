@@ -1,6 +1,6 @@
 ﻿using TaxiApp.Application.Abstractions;
 
-namespace TaxiApp.Client.Abstractions
+namespace TaxiApp.Client
 {
     public interface IClient
     {

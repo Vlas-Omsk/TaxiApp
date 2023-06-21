@@ -4,9 +4,10 @@ using PinkWpf;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TaxiApp.Application.Version1.Queries;
+using TaxiApp.Application.Version1_0.Queries;
 using TaxiApp.WindowsApp.Models;
 using TaxiApp.WindowsApp.Services;
+using TaxiApp.WindowsApp.Views;
 
 namespace TaxiApp.WindowsApp.ViewModels
 {
@@ -14,10 +15,15 @@ namespace TaxiApp.WindowsApp.ViewModels
     internal sealed partial class CarsViewModel : ObservableObject
     {
         private readonly ApiService _apiService;
+        private readonly NavigationService _navigationService;
 
-        public CarsViewModel(ApiService apiService)
+        public CarsViewModel(
+            ApiService apiService,
+            NavigationService navigationService
+        )
         {
             _apiService = apiService;
+            _navigationService = navigationService;
         }
 
         [ObservableProperty]
@@ -49,6 +55,7 @@ namespace TaxiApp.WindowsApp.ViewModels
             Cars = new FilteredCollection<CarModel>(
                 response.Value
                     .Select(x => new CarModel(
+                        x.Id,
                         x.Number,
                         x.DriverFullName,
                         x.Brand,
@@ -59,6 +66,12 @@ namespace TaxiApp.WindowsApp.ViewModels
             );
 
             LoadingState = LoadingState.Loaded;
+        }
+
+        [RelayCommand]
+        private void Open(CarModel car)
+        {
+            _navigationService.NavigateTo(new CarView(car.Id));
         }
 
         partial void OnFilterChanged(string value)
