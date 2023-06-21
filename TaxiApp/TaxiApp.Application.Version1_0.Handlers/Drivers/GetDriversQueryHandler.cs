@@ -39,7 +39,8 @@ namespace TaxiApp.Application.Version1_0.Handlers.Drivers
                         x.Patronymic
                     ),
                     x.State,
-                    x.Tariff.Name
+                    string.Join(", ", x.DriverTariffs.Select(x => x.Tariff.Name)),
+                    x.AdditionalInfo
                 ))
                 .ToArrayAsync();
 

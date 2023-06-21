@@ -2,11 +2,11 @@
 
 namespace TaxiApp.Application.Version1_0.DTO
 {
-    public sealed record DriverDTO(
-        int Id,
+    public sealed record DriverInfoDTO(
         FullName FullName,
-        DriverState State,
-        string TariffName,
+        string Inn,
+        string Passport,
+        string Address,
         string AdditionalInfo
     );
 }

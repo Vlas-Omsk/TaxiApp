@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TaxiApp.Application.Version1_0.Queries;
 using TaxiApp.WindowsApp.Models;
 using TaxiApp.WindowsApp.Services;
+using TaxiApp.WindowsApp.Views;
 
 namespace TaxiApp.WindowsApp.ViewModels
 {
@@ -14,11 +15,16 @@ namespace TaxiApp.WindowsApp.ViewModels
     internal sealed partial class DriversViewModel : ObservableObject
     {
         private readonly ApiService _apiService;
+        private readonly NavigationService _navigationService;
         private bool _showOnlyActive;
 
-        public DriversViewModel(ApiService apiService)
+        public DriversViewModel(
+            ApiService apiService,
+            NavigationService navigationService
+        )
         {
             _apiService = apiService;
+            _navigationService = navigationService;
         }
 
         public void Init(bool showOnlyActive)
@@ -57,15 +63,22 @@ namespace TaxiApp.WindowsApp.ViewModels
 
             Drivers = new FilteredCollection<DriverModel>(response.Value
                 .Select(x => new DriverModel(
+                    x.Id,
                     $"{x.FullName.LastName} {x.FullName.FirstName} {x.FullName.Patronymic}",
                     x.State.ToString(),
                     x.TariffName,
-                    null
+                    x.AdditionalInfo
                 ))
                 .ToArray()
             );
 
             LoadingState = LoadingState.Loaded;
+        }
+
+        [RelayCommand]
+        private void Open(DriverModel driver)
+        {
+            _navigationService.NavigateTo(new DriverView(driver.Id));
         }
 
         partial void OnFilterChanged(string value)

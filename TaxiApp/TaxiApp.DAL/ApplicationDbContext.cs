@@ -69,23 +69,30 @@ namespace TaxiApp.DAL.SqlServer
                     .IsRequired();
                 entity.Property(e => e.Patronymic)
                     .IsRequired();
-                entity.Property(e => e.TariffId)
-                    .IsRequired();
-                entity.Property(e => e.CarId)
-                    .IsRequired();
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasConversion<string>()
                     .HasMaxLength(40)
                     .HasDefaultValue(DriverState.Inactive);
 
-                entity.HasOne(d => d.Tariff).WithMany(p => p.Drivers)
-                    .HasForeignKey(d => d.TariffId)
-                    .HasConstraintName("FK_DriverTariffId_TariffId");
-
                 entity.HasOne(d => d.Car).WithMany(p => p.Drivers)
                     .HasForeignKey(d => d.CarId)
                     .HasConstraintName("FK_DriverCarId_CarId");
+            });
+
+            modelBuilder.Entity<DriverTariffEntity>(entity =>
+            {
+                entity.HasKey(e => new { e.TariffId, e.DriverId }).HasName("PK_DriverTariffTariffIdDriverTariffDriverId");
+
+                entity.ToTable("DriverTariff");
+
+                entity.HasOne(d => d.Tariff).WithMany(p => p.DriverTariffs)
+                    .HasForeignKey(d => d.TariffId)
+                    .HasConstraintName("FK_DriverTariffTariffId_TariffId");
+
+                entity.HasOne(d => d.Driver).WithMany(p => p.DriverTariffs)
+                    .HasForeignKey(d => d.DriverId)
+                    .HasConstraintName("FK_DriverTariffDriverId_DriverId");
             });
 
             modelBuilder.Entity<CarEntity>(entity =>
@@ -173,7 +180,7 @@ namespace TaxiApp.DAL.SqlServer
                 return;
 
             // For designer
-            optionsBuilder.UseSqlServer();
+            optionsBuilder.UseSqlServer("Server=192.168.1.100;Database=TaxiAppDB2;TrustServerCertificate=True;User Id=sa;Password=roooot");
         }
     }
 }

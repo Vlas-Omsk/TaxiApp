@@ -16,5 +16,10 @@ namespace TaxiApp.Application
         {
             public static Error NotFound { get; } = new(ErrorType.CarNotFound, null);
         }
+
+        public static class Drivers
+        {
+            public static Error NotFound { get; } = new(ErrorType.DriverNotFound, null);
+        }
     }
 }

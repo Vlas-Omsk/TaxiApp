@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiApp.DAL.SqlServer;
 
@@ -11,9 +12,11 @@ using TaxiApp.DAL.SqlServer;
 namespace TaxiApp.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230621125533_AddedDriverColumnsAndDriverTariffs")]
+    partial class AddedDriverColumnsAndDriverTariffs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,10 +147,15 @@ namespace TaxiApp.DAL.SqlServer.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasDefaultValue("Inactive");
 
+                    b.Property<int?>("TariffEntityId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id")
                         .HasName("PK_DriverId");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("TariffEntityId");
 
                     b.ToTable("Driver", (string)null);
                 });
@@ -287,6 +295,10 @@ namespace TaxiApp.DAL.SqlServer.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_DriverCarId_CarId");
 
+                    b.HasOne("TaxiApp.DAL.Entities.TariffEntity", null)
+                        .WithMany("Drivers")
+                        .HasForeignKey("TariffEntityId");
+
                     b.Navigation("Car");
                 });
 
@@ -356,6 +368,8 @@ namespace TaxiApp.DAL.SqlServer.Migrations
                     b.Navigation("CarTariffs");
 
                     b.Navigation("DriverTariffs");
+
+                    b.Navigation("Drivers");
                 });
 #pragma warning restore 612, 618
         }

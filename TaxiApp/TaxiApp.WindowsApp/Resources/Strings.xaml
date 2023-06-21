@@ -35,7 +35,13 @@
     <system:String x:Key="Edit">Редактировать</system:String>
     <system:String x:Key="Delete">Удалить</system:String>
     <system:String x:Key="Number">Номер</system:String>
-
+    <system:String x:Key="LastName">Фамилия</system:String>
+    <system:String x:Key="FirstName">Имя</system:String>
+    <system:String x:Key="Patronymic">Отчество</system:String>
+    <system:String x:Key="Inn">ИНН</system:String>
+    <system:String x:Key="Passport">Пасспорт</system:String>
+    <system:String x:Key="Address">Адресс</system:String>
+    
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>
     <system:String x:Key="TurnOffLight">Выключить свет</system:String>

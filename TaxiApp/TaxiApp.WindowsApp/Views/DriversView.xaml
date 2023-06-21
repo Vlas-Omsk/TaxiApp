@@ -8,7 +8,8 @@
                xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
                mc:Ignorable="d" 
                d:DesignStyle="{StaticResource DesignStyle}"
-               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}">
+               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}"
+               x:Name="Root">
     <controls:View.Resources>
         <GridLength x:Key="InfoTileGap">7.5</GridLength>
     </controls:View.Resources>
@@ -30,27 +31,31 @@
                         <ItemsControl ItemsSource="{Binding Drivers}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <ExtendedGrid Rows="[32],auto,[24],auto,[32],auto"
-                                                  AutoPositioning="True">
-                                        <ExtendedGrid Columns="*,auto"
+                                    <Button Style="{StaticResource ClearButton}"
+                                            Command="{Binding DataContext.OpenCommand, ElementName=Root}"
+                                            CommandParameter="{Binding}">
+                                        <ExtendedGrid Rows="[32],auto,[24],auto,[32],auto"
                                                       AutoPositioning="True">
-                                            <Label FontSize="24"
-                                                   Content="{Binding FullName}"/>
-                                        </ExtendedGrid>
-
-                                        <AnimatedScrollViewer VerticalScrollBarVisibility="Disabled"
-                                                              HorizontalScrollBarVisibility="Hidden">
-                                            <ExtendedGrid Columns="[22],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                            <ExtendedGrid Columns="*,auto"
                                                           AutoPositioning="True">
-                                                <controls:InfoTile Content="{Binding Status}"/>
-                                                <controls:InfoTile Content="{Binding Tariff}"/>
-                                                <controls:InfoTile Content="{Binding AdditionalInfo}"/>
+                                                <Label FontSize="24"
+                                                       Content="{Binding FullName}"/>
                                             </ExtendedGrid>
-                                        </AnimatedScrollViewer>
 
-                                        <Border BorderThickness="0 0 0 1"
-                                                BorderBrush="{DynamicResource BrushBorderSecondary}"/>
-                                    </ExtendedGrid>
+                                            <AnimatedScrollViewer VerticalScrollBarVisibility="Disabled"
+                                                                  HorizontalScrollBarVisibility="Hidden">
+                                                <ExtendedGrid Columns="[22],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                                              AutoPositioning="True">
+                                                    <controls:InfoTile Content="{Binding Status}"/>
+                                                    <controls:InfoTile Content="{Binding Tariff}"/>
+                                                    <controls:InfoTile Content="{Binding AdditionalInfo}"/>
+                                                </ExtendedGrid>
+                                            </AnimatedScrollViewer>
+
+                                            <Border BorderThickness="0 0 0 1"
+                                                    BorderBrush="{DynamicResource BrushBorderSecondary}"/>
+                                        </ExtendedGrid>
+                                    </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

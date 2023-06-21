@@ -5,6 +5,7 @@
         DoesNotHaveAccess,
         AnonymouseAccessNotAllowed,
         UnableToChangeCurrentEmployee,
-        CarNotFound
+        CarNotFound,
+        DriverNotFound
     }
 }
