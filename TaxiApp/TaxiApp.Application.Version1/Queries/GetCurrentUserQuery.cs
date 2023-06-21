@@ -3,7 +3,5 @@ using TaxiApp.Application.Version1_0.DTO;
 
 namespace TaxiApp.Application.Version1_0.Queries
 {
-    public sealed class GetCurrentUserQuery : IRequest<UserDTO>
-    {
-    }
+    public sealed record GetCurrentUserQuery() : IRequest<UserDTO>;
 }

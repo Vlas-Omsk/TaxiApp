@@ -57,7 +57,7 @@ namespace TaxiApp.WindowsApp.ViewModels
 
             Drivers = new FilteredCollection<DriverModel>(response.Value
                 .Select(x => new DriverModel(
-                    $"{x.LastName} {x.FirstName} {x.Patronymic}",
+                    $"{x.FullName.LastName} {x.FullName.FirstName} {x.FullName.Patronymic}",
                     x.State.ToString(),
                     x.TariffName,
                     null

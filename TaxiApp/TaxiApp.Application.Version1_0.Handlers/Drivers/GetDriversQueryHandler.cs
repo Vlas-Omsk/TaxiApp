@@ -33,9 +33,11 @@ namespace TaxiApp.Application.Version1_0.Handlers.Drivers
             var result = await queryable
                 .Select(x => new DriverDTO(
                     x.Id,
-                    x.LastName,
-                    x.FirstName,
-                    x.Patronymic,
+                    new FullName(
+                        x.LastName,
+                        x.FirstName,
+                        x.Patronymic
+                    ),
                     x.State,
                     x.Tariff.Name
                 ))

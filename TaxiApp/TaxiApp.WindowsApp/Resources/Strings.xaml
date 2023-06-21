@@ -33,6 +33,8 @@
     <system:String x:Key="AdditionalInfo">Дополнительная информация</system:String>
     <system:String x:Key="Save">Сохранить</system:String>
     <system:String x:Key="Edit">Редактировать</system:String>
+    <system:String x:Key="Delete">Удалить</system:String>
+    <system:String x:Key="Number">Номер</system:String>
 
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

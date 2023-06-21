@@ -11,5 +11,10 @@ namespace TaxiApp.Application
             public static Error AnonymouseAccessNotAllowed { get; } = new(ErrorType.AnonymouseAccessNotAllowed, null);
             public static Error UnableToChangeCurrentEmployee { get; } = new(ErrorType.UnableToChangeCurrentEmployee, null);
         }
+
+        public static class Cars
+        {
+            public static Error NotFound { get; } = new(ErrorType.CarNotFound, null);
+        }
     }
 }

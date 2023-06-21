@@ -13,13 +13,13 @@
         <GridLength x:Key="DefaultRowGap">5</GridLength>
     </controls:View.Resources>
 
-    <controls:PageTemplate Title="{Binding GovermentNumber}">
+    <controls:PageTemplate Title="{Binding Number}">
         <Loader Command="{Binding LoadCommand}"
                 State="{Binding LoadingState}"
                 Status="{Binding LoadingStatus}"
                 d:State="Loaded">
             <AnimatedScrollViewer>
-                <ExtendedGrid Rows="auto,[28],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[*|18],auto,[27],auto"
+                <ExtendedGrid Rows="auto,[28],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[*|18],auto,[27],auto"
                               AutoPositioning="True">
                     <ExtendedGrid Columns="*||200,[*],auto"
                                   AutoPositioning="True">
@@ -36,23 +36,37 @@
                                 Visibility="{Binding EditPhotoButtonVisibility}"/>
                     </ExtendedGrid>
 
+                    <controls:Field Label="{StaticResource Number}"
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Number}"/>
                     <controls:Field Label="{StaticResource Color}"
-                                    IsReadOnly="{Binding IsReadOnly}"/>
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Color}"/>
                     <controls:Field Label="{StaticResource YearOfManufacture}"
-                                    IsReadOnly="{Binding IsReadOnly}"/>
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding YearOfManufacture}"/>
                     <controls:Field Label="{StaticResource Brand}"
-                                    IsReadOnly="{Binding IsReadOnly}"/>
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Brand}"/>
                     <controls:Field Label="{StaticResource Model}"
-                                    IsReadOnly="{Binding IsReadOnly}"/>
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Model}"/>
                     <controls:Field Style="{StaticResource BigField}"
                                     Label="{StaticResource AdditionalInfo}"
-                                    IsReadOnly="{Binding IsReadOnly}"/>
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding AdditionalInfo}"/>
 
                     <ExtendedGrid Columns="[*],auto">
-                        <Button Style="{StaticResource PrimaryButton}"
-                                Content="{StaticResource Save}"
-                                Command="{Binding SaveCommand}"
-                                Visibility="{Binding SaveButtonVisibility}"/>
+                        <ExtendedGrid Columns="auto,[5],auto"
+                                      AutoPositioning="True"
+                                      Visibility="{Binding SaveButtonVisibility}">
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Delete}"
+                                    Command="{Binding DeleteCommand}"/>
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Save}"
+                                    Command="{Binding SaveCommand}"/>
+                        </ExtendedGrid>
                         
                         <Button Style="{StaticResource PrimaryButton}"
                                 Content="{StaticResource Edit}"

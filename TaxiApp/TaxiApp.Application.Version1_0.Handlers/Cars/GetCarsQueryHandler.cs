@@ -30,7 +30,8 @@ namespace TaxiApp.Application.Version1_0.Handlers.Cars
                     string.Join(
                         ", ",
                         x.Drivers.Select(x => $"{x.LastName} {x.FirstName} {x.Patronymic}")
-                    )
+                    ),
+                    x.AdditionalInfo
                 ))
                 .ToArrayAsync();
 

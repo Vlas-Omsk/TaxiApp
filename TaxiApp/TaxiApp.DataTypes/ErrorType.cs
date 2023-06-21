@@ -4,6 +4,7 @@
     {
         DoesNotHaveAccess,
         AnonymouseAccessNotAllowed,
-        UnableToChangeCurrentEmployee
+        UnableToChangeCurrentEmployee,
+        CarNotFound
     }
 }

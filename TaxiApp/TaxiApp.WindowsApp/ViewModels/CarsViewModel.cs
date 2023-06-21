@@ -60,7 +60,7 @@ namespace TaxiApp.WindowsApp.ViewModels
                         x.DriverFullName,
                         x.Brand,
                         x.Color,
-                        null
+                        x.AdditionalInfo
                     ))
                     .ToArray()
             );

@@ -3,8 +3,7 @@ using TaxiApp.Application.Version1_0.DTO;
 
 namespace TaxiApp.Application.Version1_0.Queries
 {
-    public sealed class GetDriversQuery : IRequest<DriverDTO[]>
-    {
-        public bool FilterActive { get; set; } = false;
-    }
+    public sealed record GetDriversQuery(
+        bool FilterActive = false
+    ) : IRequest<DriverDTO[]>;
 }

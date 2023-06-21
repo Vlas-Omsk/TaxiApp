@@ -1,11 +1,13 @@
 ﻿namespace TaxiApp.Application.Version1_0.DTO
 {
-    public sealed record CarDTO(
+    public sealed record CarInfoDTO(
         int Id,
-        string Brand,
         string Number,
         string Color,
-        string DriverFullName,
+        TariffDTO[] Tariffs,
+        int YearOfManufacture,
+        string Brand,
+        string Model,
         string AdditionalInfo
     );
 }

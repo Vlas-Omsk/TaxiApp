@@ -3,5 +3,7 @@ using TaxiApp.Application.Version1_0.DTO;
 
 namespace TaxiApp.Application.Version1_0.Queries
 {
-    public sealed record GetCarsQuery() : IRequest<CarDTO[]>;
+    public sealed record GetCarInfoQuery(
+        int Id
+    ) : IRequest<CarInfoDTO>;
 }
