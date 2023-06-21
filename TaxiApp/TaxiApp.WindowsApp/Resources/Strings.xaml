@@ -13,12 +13,6 @@
     <system:String x:Key="SearchByGovermentNumber">Поиск по гос номеру</system:String>
     <system:String x:Key="Cars">Автомобили</system:String>
     <system:String x:Key="SelectTariff">Выберите тариф</system:String>
-    <system:String x:Key="EconomyTariff">Эконом</system:String>
-    <system:String x:Key="ComfortTariff">Комфорт</system:String>
-    <system:String x:Key="ComfortPlusTariff">Комфорт+</system:String>
-    <system:String x:Key="ChildrensTariff">Детский</system:String>
-    <system:String x:Key="CargoTariff">Грузовой</system:String>
-    <system:String x:Key="CourierTariff">Курьер</system:String>
     <system:String x:Key="Drivers">Водители</system:String>
     <system:String x:Key="SearchByFullName">Поиск по ФИО</system:String>
     <system:String x:Key="Orders">Заказы</system:String>
@@ -41,6 +35,14 @@
     <system:String x:Key="Inn">ИНН</system:String>
     <system:String x:Key="Passport">Пасспорт</system:String>
     <system:String x:Key="Address">Адресс</system:String>
+    <system:String x:Key="Description">Описание</system:String>
+    <system:String x:Key="Name">Наименование</system:String>
+    <system:String x:Key="StartingPrice">Минимальная стоимость</system:String>
+    <system:String x:Key="FreeWaiting">Бесплатное ожидание</system:String>
+    <system:String x:Key="PaidWaiting">Платное ожидание</system:String>
+    <system:String x:Key="InCity">Далее по городу</system:String>
+    <system:String x:Key="OutsideCity">Далее за пределами города</system:String>
+    <system:String x:Key="WaitingOnWay">Ожидание в пути</system:String>
     
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

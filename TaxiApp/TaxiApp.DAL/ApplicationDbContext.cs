@@ -53,6 +53,18 @@ namespace TaxiApp.DAL.SqlServer
                 entity.Property(e => e.StartingPrice)
                     .HasColumnType("money")
                     .IsRequired();
+                entity.Property(e => e.PaidWaitingPricePerMin)
+                    .HasColumnType("money")
+                    .IsRequired();
+                entity.Property(e => e.InCityPricePerKm)
+                    .HasColumnType("money")
+                    .IsRequired();
+                entity.Property(e => e.OutsideCityPricePerKm)
+                    .HasColumnType("money")
+                    .IsRequired();
+                entity.Property(e => e.WaitingOnWayPricePerMin)
+                    .HasColumnType("money")
+                    .IsRequired();
             });
 
             modelBuilder.Entity<DriverEntity>(entity =>
@@ -171,6 +183,34 @@ namespace TaxiApp.DAL.SqlServer
                 entity.Property(e => e.PhoneNumber)
                     .HasMaxLength(20)
                     .IsRequired();
+            });
+
+            modelBuilder.Entity<AdditionalServiceEntity>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_AdditionalServiceId");
+
+                entity.ToTable("AdditionalService");
+
+                entity.Property(e => e.Name)
+                    .IsRequired();
+                entity.Property(e => e.Price)
+                    .HasColumnType("money")
+                    .IsRequired();
+            });
+
+            modelBuilder.Entity<TariffAdditionalServiceEntity>(entity =>
+            {
+                entity.HasKey(e => new { e.TariffId, e.AdditionalServiceId }).HasName("PK_TariffAdditionalServiceTariffIdAdditionalServiceId");
+
+                entity.ToTable("TariffAdditionalService");
+
+                entity.HasOne(d => d.Tariff).WithMany(p => p.TariffAdditionalServices)
+                    .HasForeignKey(d => d.TariffId)
+                    .HasConstraintName("FK_TariffAdditionalServiceTariffId_TariffId");
+
+                entity.HasOne(d => d.AdditionalService).WithMany(p => p.TariffAdditionalServices)
+                    .HasForeignKey(d => d.AdditionalServiceId)
+                    .HasConstraintName("FK_TariffAdditionalServiceAdditionalServiceId_AdditionalServiceId");
             });
         }
 

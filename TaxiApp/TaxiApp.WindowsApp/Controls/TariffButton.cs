@@ -60,5 +60,22 @@ namespace TaxiApp.WindowsApp.Controls
         );
 
         #endregion
+
+        #region CommandProperty
+
+        public object CommandParameter
+        {
+            get => GetValue(CommandParameterProperty);
+            set => SetValue(CommandParameterProperty, value);
+        }
+
+        public readonly static DependencyProperty CommandParameterProperty = DependencyProperty.Register(
+            nameof(CommandParameter),
+            typeof(object),
+            typeof(TariffButton),
+            new PropertyMetadata()
+        );
+
+        #endregion
     }
 }

@@ -113,7 +113,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:TariffButton">
                     <Button Style="{StaticResource PrimaryButton}"
-                            Command="{TemplateBinding Command}">
+                            Command="{TemplateBinding Command}"
+                            CommandParameter="{TemplateBinding CommandParameter}">
                         <ExtendedGrid Rows="auto,[17],auto"
                                       AutoPositioning="True"
                                       VerticalAlignment="Center"

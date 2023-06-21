@@ -10,6 +10,7 @@ namespace TaxiApp.Domain.Extensions
             services.AddSingleton<UsersService>();
             services.AddSingleton<CarsService>();
             services.AddSingleton<DriversService>();
+            services.AddSingleton<TariffsService>();
         }
     }
 }

@@ -11,25 +11,24 @@
                d:DataContext="{d:DesignInstance viewmodels:TariffsViewModel}">
     <controls:View.Resources>
         <GridLength x:Key="Gap">12</GridLength>
+        <GridLength x:Key="RowHeight">189</GridLength>
     </controls:View.Resources>
 
     <controls:PageTemplate Title="{StaticResource SelectTariff}">
-        <AnimatedScrollViewer>
-            <ExtendedGrid Rows="*,[12],auto"
-                          AutoPositioning="True">
-                <ExtendedGrid Columns="*,[{Gap}],*"
-                              Rows="189,[{Gap}],189,[{Gap}],189"
+        <Loader Command="{Binding LoadCommand}"
+                State="{Binding LoadingState}"
+                Status="{Binding LoadingStatus}"
+                d:State="Loaded">
+            <AnimatedScrollViewer>
+                <ExtendedGrid Rows="*,[12],auto"
                               AutoPositioning="True">
-                    <controls:TariffButton Title="{StaticResource EconomyTariff}"/>
-                    <controls:TariffButton Title="{StaticResource ComfortTariff}"/>
-                    <controls:TariffButton Title="{StaticResource ComfortPlusTariff}"/>
-                    <controls:TariffButton Title="{StaticResource ChildrensTariff}"/>
-                    <controls:TariffButton Title="{StaticResource CargoTariff}"/>
-                    <controls:TariffButton Title="{StaticResource CourierTariff}"/>
+                    <ExtendedGrid x:Name="TariffsGrid"
+                                  Columns="*,[{Gap}],*"
+                                  AutoPositioning="True"/>
+
+                    <components:SettingsComponent ExtendedGrid.RelativeColumnSpan="2"/>
                 </ExtendedGrid>
-                
-                <components:SettingsComponent ExtendedGrid.RelativeColumnSpan="2"/>
-            </ExtendedGrid>
-        </AnimatedScrollViewer>
+            </AnimatedScrollViewer>
+        </Loader>
     </controls:PageTemplate>
 </controls:View>
