@@ -5,11 +5,9 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
                xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
-               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
                mc:Ignorable="d" 
                d:DesignStyle="{StaticResource DesignStyle}"
-               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}"
-               x:Name="Root">
+               d:DataContext="{d:DesignInstance viewmodels:DriversViewModel}">
     <controls:View.Resources>
         <GridLength x:Key="InfoTileGap">7.5</GridLength>
     </controls:View.Resources>
@@ -19,51 +17,27 @@
                 State="{Binding LoadingState}"
                 Status="{Binding LoadingStatus}"
                 d:State="Loaded">
-            <ExtendedGrid Rows="auto,[10],*"
-                          AutoPositioning="True">
-                <controls:SearchInput Placeholder="{StaticResource SearchByFullName}"
-                                      Text="{Binding Filter}"/>
-
-                <AnimatedScrollViewer VerticalScrollBarVisibility="Hidden"
-                                      HorizontalScrollBarVisibility="Disabled">
-                    <ExtendedGrid Rows="*,auto"
-                                  AutoPositioning="True">
-                        <ItemsControl ItemsSource="{Binding Drivers}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource ClearButton}"
-                                            Command="{Binding DataContext.OpenCommand, ElementName=Root}"
-                                            CommandParameter="{Binding}">
-                                        <ExtendedGrid Rows="[32],auto,[24],auto,[32],auto"
-                                                      AutoPositioning="True">
-                                            <ExtendedGrid Columns="*,auto"
-                                                          AutoPositioning="True">
-                                                <Label FontSize="24"
-                                                       Content="{Binding FullName}"/>
-                                            </ExtendedGrid>
-
-                                            <AnimatedScrollViewer VerticalScrollBarVisibility="Disabled"
-                                                                  HorizontalScrollBarVisibility="Hidden">
-                                                <ExtendedGrid Columns="[22],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
-                                                              AutoPositioning="True">
-                                                    <controls:InfoTile Content="{Binding Status}"/>
-                                                    <controls:InfoTile Content="{Binding Tariff}"/>
-                                                    <controls:InfoTile Content="{Binding AdditionalInfo}"/>
-                                                </ExtendedGrid>
-                                            </AnimatedScrollViewer>
-
-                                            <Border BorderThickness="0 0 0 1"
-                                                    BorderBrush="{DynamicResource BrushBorderSecondary}"/>
-                                        </ExtendedGrid>
-                                    </Button>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-
-                        <components:SettingsComponent/>
-                    </ExtendedGrid>
-                </AnimatedScrollViewer>
-            </ExtendedGrid>
+            <controls:List SearchPlaceholder="{StaticResource SearchByFullName}"
+                           SearchText="{Binding Filter}"
+                           ItemsSource="{Binding Drivers}"
+                           Command="{Binding OpenCommand}">
+                <controls:List.ItemInfoTemplate>
+                    <DataTemplate>
+                        <ExtendedGrid Margin="22 0 0 0"
+                                      Columns="auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                      AutoPositioning="True">
+                            <controls:InfoTile Content="{Binding Status}"/>
+                            <controls:InfoTile Content="{Binding Tariff}"/>
+                            <controls:InfoTile Content="{Binding AdditionalInfo}"/>
+                        </ExtendedGrid>
+                    </DataTemplate>
+                </controls:List.ItemInfoTemplate>
+                <controls:List.TitleTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </controls:List.TitleTemplate>
+            </controls:List>
         </Loader>
     </controls:PageTemplate>
 </controls:View>

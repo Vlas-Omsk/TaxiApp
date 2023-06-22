@@ -2,6 +2,7 @@
 using TaxiApp.Application.Services;
 using TaxiApp.Application.Version1_0.DTO;
 using TaxiApp.Application.Version1_0.Queries;
+using TaxiApp.DataTypes;
 
 namespace TaxiApp.Application.Version1_0.Handlers.Users
 {
@@ -23,6 +24,11 @@ namespace TaxiApp.Application.Version1_0.Handlers.Users
 
             return Success(new UserDTO(
                 user.Login,
+                new FullName(
+                    user.LastName,
+                    user.FirstName,
+                    user.Patronymic
+                ),
                 user.Role
             ));
         }

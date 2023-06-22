@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace TaxiApp.WindowsApp.Controls

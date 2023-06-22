@@ -43,6 +43,7 @@
     <system:String x:Key="InCity">Далее по городу</system:String>
     <system:String x:Key="OutsideCity">Далее за пределами города</system:String>
     <system:String x:Key="WaitingOnWay">Ожидание в пути</system:String>
+    <system:String x:Key="Users">Пользователи</system:String>
     
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

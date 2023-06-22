@@ -1,4 +1,4 @@
-﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.CarsView"
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.UsersView"
                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,35 +7,32 @@
                xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
                mc:Ignorable="d" 
                d:DesignStyle="{StaticResource DesignStyle}"
-               d:DataContext="{d:DesignInstance viewmodels:CarsViewModel}">
+               d:DataContext="{d:DesignInstance viewmodels:UsersViewModel}">
     <controls:View.Resources>
         <GridLength x:Key="InfoTileGap">7.5</GridLength>
     </controls:View.Resources>
 
-    <controls:PageTemplate Title="{StaticResource Cars}">
+    <controls:PageTemplate Title="{StaticResource Users}">
         <Loader Command="{Binding LoadCommand}"
                 State="{Binding LoadingState}"
                 Status="{Binding LoadingStatus}"
                 d:State="Loaded">
-            <controls:List SearchPlaceholder="{StaticResource SearchByGovermentNumber}"
+            <controls:List SearchPlaceholder="{StaticResource SearchByFullName}"
                            SearchText="{Binding Filter}"
-                           ItemsSource="{Binding Cars}"
+                           ItemsSource="{Binding Users}"
                            Command="{Binding OpenCommand}">
                 <controls:List.ItemInfoTemplate>
                     <DataTemplate>
                         <ExtendedGrid Margin="22 0 0 0"
-                                      Columns="auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                      Columns="auto"
                                       AutoPositioning="True">
-                            <controls:InfoTile Content="{Binding DriverFullName}"/>
-                            <controls:InfoTile Content="{Binding Model}"/>
-                            <controls:InfoTile Content="{Binding Color}"/>
-                            <controls:InfoTile Content="{Binding AdditionalInfo}"/>
+                            <controls:InfoTile Content="{Binding Role}"/>
                         </ExtendedGrid>
                     </DataTemplate>
                 </controls:List.ItemInfoTemplate>
                 <controls:List.TitleTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding GovermentNumber}"/>
+                        <TextBlock Text="{Binding FullName}"/>
                     </DataTemplate>
                 </controls:List.TitleTemplate>
             </controls:List>

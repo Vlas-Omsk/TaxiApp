@@ -58,9 +58,9 @@ namespace TaxiApp.WindowsApp.ViewModels
                         null
                     ));
                     items.Add(new MenuItemModel(
-                        null,
+                        new Images.Report(),
                         resourcesService.FindString("Users"),
-                        null
+                        OpenUsersCommand
                     ));
                     break;
                 case UserRole.Dispatcher:
@@ -125,6 +125,12 @@ namespace TaxiApp.WindowsApp.ViewModels
         private void OpenActiveDrivers()
         {
             _navigationService.NavigateTo(new DriversView(showOnlyActive: true));
+        }
+
+        [RelayCommand]
+        private void OpenUsers()
+        {
+            _navigationService.NavigateTo(new UsersView());
         }
     }
 }

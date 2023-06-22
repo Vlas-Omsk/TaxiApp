@@ -18,7 +18,7 @@ namespace TaxiApp.Application.Version1_0.Handlers.Users
 
         protected override async Task<Response<bool>> ExecuteOverride(CreateUserCommand request)
         {
-            await _usersService.Add(
+            await _usersService.Create(
                 request.Login,
                 request.Password,
                 request.Role

@@ -1,4 +1,4 @@
-﻿using TaxiApp.Domain.Models;
+﻿using TaxiApp.DAL.Entities;
 using TaxiApp.Domain.Services;
 using TaxiApp.Server.Abstractions;
 
@@ -8,7 +8,7 @@ namespace TaxiApp.Application.Services
     {
         private readonly IRequestContext _requestContext;
         private readonly UsersService _usersService;
-        private User _user;
+        private UserEntity _user;
         private bool _userInitialized = false;
 
         public SecurityService(
@@ -20,7 +20,7 @@ namespace TaxiApp.Application.Services
             _usersService = usersService;
         }
 
-        public async Task<User> GetCurrentUser()
+        public async Task<UserEntity> GetCurrentUser()
         {
             if (_userInitialized)
                 return _user;

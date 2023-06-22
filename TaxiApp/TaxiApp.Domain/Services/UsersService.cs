@@ -2,7 +2,6 @@
 using TaxiApp.DAL;
 using TaxiApp.DAL.Entities;
 using TaxiApp.DataTypes;
-using TaxiApp.Domain.Models;
 
 namespace TaxiApp.Domain.Services
 {
@@ -15,18 +14,18 @@ namespace TaxiApp.Domain.Services
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<User> Get(string login, string password)
+        public IQueryable<UserEntity> GetAll()
         {
-            var user = await _applicationDbContext.Users
-                .FirstOrDefaultAsync(x => x.Login == login && x.Password == password);
-
-            if (user == null)
-                return null;
-
-            return new User(user.Login, user.Role);
+            return _applicationDbContext.Users;
         }
 
-        public async Task Add(
+        public async Task<UserEntity> Get(string login, string password)
+        {
+            return await _applicationDbContext.Users
+                .FirstOrDefaultAsync(x => x.Login == login && x.Password == password);
+        }
+
+        public async Task Create(
             string login,
             string password,
             UserRole role
