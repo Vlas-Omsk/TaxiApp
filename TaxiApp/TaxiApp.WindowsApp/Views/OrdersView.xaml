@@ -8,15 +8,43 @@
                mc:Ignorable="d" 
                d:DesignStyle="{StaticResource DesignStyle}"
                d:DataContext="{d:DesignInstance viewmodels:OrdersViewModel}">
+    <controls:View.Resources>
+        <GridLength x:Key="InfoTileGap">7.5</GridLength>
+    </controls:View.Resources>
 
     <controls:PageTemplate Title="{StaticResource Orders}">
+        <controls:PageTemplate.HeaderContent>
+            <Button Style="{StaticResource PrimaryButton}"
+                    Content="{StaticResource Add}"
+                    Command="{Binding AddCommand}"
+                    HorizontalAlignment="Right"/>
+        </controls:PageTemplate.HeaderContent>
+        
         <Loader Command="{Binding LoadCommand}"
                 State="{Binding LoadingState}"
+                Status="{Binding LoadingStatus}"
                 d:State="Loaded">
-            <ExtendedGrid Rows="auto"
-                          AutoPositioning="True">
-                <controls:SearchInput Placeholder="{StaticResource SearchByNumber}"/>
-            </ExtendedGrid>
+            <controls:List SearchPlaceholder="{StaticResource SearchByNumber}"
+                           SearchText="{Binding Filter}"
+                           ItemsSource="{Binding Orders}"
+                           Command="{Binding OpenCommand}">
+                <controls:List.ItemInfoTemplate>
+                    <DataTemplate>
+                        <ExtendedGrid Margin="22 0 0 0"
+                                      Columns="auto,[{InfoTileGap}],auto,[{InfoTileGap}],auto"
+                                      AutoPositioning="True">
+                            <controls:InfoTile Content="{Binding CreatedAtDateText}"/>
+                            <controls:InfoTile Content="{Binding CreatedAtTimeText}"/>
+                            <controls:InfoTile Content="{Binding DriverFullName}"/>
+                        </ExtendedGrid>
+                    </DataTemplate>
+                </controls:List.ItemInfoTemplate>
+                <controls:List.TitleTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Id}"/>
+                    </DataTemplate>
+                </controls:List.TitleTemplate>
+            </controls:List>
         </Loader>
     </controls:PageTemplate>
 </controls:View>

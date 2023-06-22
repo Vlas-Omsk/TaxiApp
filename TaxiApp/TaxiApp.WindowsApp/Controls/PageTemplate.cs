@@ -25,5 +25,21 @@ namespace TaxiApp.WindowsApp.Controls
         );
 
         #endregion
+
+        #region HeaderContentProperty
+
+        public object HeaderContent
+        {
+            get => (object)GetValue(HeaderContentProperty);
+            set => SetValue(HeaderContentProperty, value);
+        }
+
+        public readonly static DependencyProperty HeaderContentProperty = DependencyProperty.Register(
+            nameof(HeaderContent),
+            typeof(object),
+            typeof(PageTemplate)
+        );
+
+        #endregion
     }
 }

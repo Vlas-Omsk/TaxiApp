@@ -44,6 +44,16 @@
     <system:String x:Key="OutsideCity">Далее за пределами города</system:String>
     <system:String x:Key="WaitingOnWay">Ожидание в пути</system:String>
     <system:String x:Key="Users">Пользователи</system:String>
+    <system:String x:Key="Add">Добавить</system:String>
+    <system:String x:Key="Driver">Водитель</system:String>
+    <system:String x:Key="Tariff">Тариф</system:String>
+    <system:String x:Key="Client">Клиент</system:String>
+    <system:String x:Key="Car">Автомобиль</system:String>
+    <system:String x:Key="Cost">Стоимость</system:String>
+    <system:String x:Key="AddressFrom">Начальный адрес</system:String>
+    <system:String x:Key="AddressTo">Конечный адрес</system:String>
+    <system:String x:Key="CreatedAt">Создан</system:String>
+    <system:String x:Key="Comment">Комментарий</system:String>
     
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

@@ -39,7 +39,9 @@ namespace TaxiApp.Application
         {
             var requestType = request.GetType();
 
-            var handler = (IRequestHandler<TRequest>)_serviceProvider.GetRequiredService(typeof(IRequestHandler<>).MakeGenericType(requestType));
+            var handler = (IRequestHandler<TRequest>)_serviceProvider
+                .GetRequiredService(typeof(IRequestHandler<>)
+                .MakeGenericType(requestType));
 
             var response = await handler.Verify(request);
 

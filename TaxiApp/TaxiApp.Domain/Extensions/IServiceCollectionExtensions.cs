@@ -7,10 +7,12 @@ namespace TaxiApp.Domain.Extensions
     {
         public static void AddDomain(this IServiceCollection services)
         {
-            services.AddSingleton<UsersService>();
-            services.AddSingleton<CarsService>();
-            services.AddSingleton<DriversService>();
-            services.AddSingleton<TariffsService>();
+            services.AddScoped<UsersService>();
+            services.AddScoped<CarsService>();
+            services.AddScoped<DriversService>();
+            services.AddScoped<TariffsService>();
+            services.AddScoped<OrdersService>();
+            services.AddScoped<ClientsService>();
         }
     }
 }

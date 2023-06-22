@@ -285,7 +285,12 @@
                 <ControlTemplate TargetType="controls:PageTemplate">
                     <ExtendedGrid Rows="auto,auto,[18],*"
                                   AutoPositioning="True">
-                        <components:NavigationComponent/>
+                        <ExtendedGrid Columns="auto,[5],*"
+                                      AutoPositioning="True">
+                            <components:NavigationComponent/>
+
+                            <ContentPresenter Content="{TemplateBinding HeaderContent}"/>
+                        </ExtendedGrid>
 
                         <Label Content="{TemplateBinding Title}"
                                Style="{StaticResource Header2}"
@@ -345,6 +350,28 @@
                         <TextBox Style="{StaticResource UnderlinedTextBox}"
                                  Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                    </ExtendedGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="controls:Select">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:Select">
+                    <ExtendedGrid Columns="auto,[5],*"
+                                  AutoPositioning="True">
+                        <Label FontSize="20">
+                            <TextBlock>
+                                <Run Text="{TemplateBinding Label}"/>:
+                            </TextBlock>
+                        </Label>
+
+                        <ComboBox ItemsSource="{TemplateBinding ItemsSource}"
+                                  SelectedValue="{Binding SelectedValue, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                  DisplayMemberPath="{TemplateBinding DisplayPath}"
+                                  IsReadOnly="{TemplateBinding IsReadOnly}"/>
                     </ExtendedGrid>
                 </ControlTemplate>
             </Setter.Value>

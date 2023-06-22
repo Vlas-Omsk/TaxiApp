@@ -1,0 +1,82 @@
+﻿<controls:View x:Class="TaxiApp.WindowsApp.Views.OrderView"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:controls="clr-namespace:TaxiApp.WindowsApp.Controls"
+               xmlns:viewmodels="clr-namespace:TaxiApp.WindowsApp.ViewModels"
+               xmlns:components="clr-namespace:TaxiApp.WindowsApp.Components"
+               mc:Ignorable="d" 
+               d:DesignStyle="{StaticResource DesignStyle}"
+               d:DataContext="{d:DesignInstance viewmodels:OrderViewModel}">
+    <controls:View.Resources>
+        <GridLength x:Key="DefaultRowGap">5</GridLength>
+    </controls:View.Resources>
+
+    <controls:PageTemplate Title="{Binding Id}">
+        <Loader Command="{Binding LoadCommand}"
+                State="{Binding LoadingState}"
+                Status="{Binding LoadingStatus}"
+                d:State="Loaded">
+            <AnimatedScrollViewer>
+                <ExtendedGrid Rows="auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[{}],auto,[*|18],auto,[27],auto"
+                              AutoPositioning="True">
+                    <controls:Select Label="{StaticResource Driver}"
+                                     IsReadOnly="{Binding IsReadOnly}"
+                                     ItemsSource="{Binding Drivers}"
+                                     SelectedValue="{Binding Driver}"
+                                     DisplayPath="FullName"/>
+                    <controls:Select Label="{StaticResource Tariff}"
+                                     IsReadOnly="{Binding IsTariffReadOnly}"
+                                     ItemsSource="{Binding Driver.Tariffs}"
+                                     SelectedValue="{Binding Tariff}"
+                                     DisplayPath="Name"/>
+                    <controls:Select Label="{StaticResource Client}"
+                                     IsReadOnly="{Binding IsReadOnly}"
+                                     ItemsSource="{Binding Clients}"
+                                     SelectedValue="{Binding Client}"
+                                     DisplayPath="Name"/>
+                    <controls:Field Label="{StaticResource Car}"
+                                    IsReadOnly="True"
+                                    Text="{Binding Driver.Car.Number, Mode=OneWay}"/>
+                    <controls:Field Label="{StaticResource Cost}"
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Cost}"/>
+                    <controls:Field Label="{StaticResource AddressFrom}"
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding AddressFrom}"/>
+                    <controls:Field Label="{StaticResource AddressTo}"
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding AddressTo}"/>
+                    <controls:Field Label="{StaticResource CreatedAt}"
+                                    IsReadOnly="True"
+                                    Text="{Binding CreatedAtText, Mode=OneWay}"/>
+                    <controls:Field Style="{StaticResource BigField}"
+                                    Label="{StaticResource Comment}"
+                                    IsReadOnly="{Binding IsReadOnly}"
+                                    Text="{Binding Comment}"/>
+
+                    <ExtendedGrid Columns="[*],auto">
+                        <ExtendedGrid Columns="auto,[5],auto"
+                                      AutoPositioning="True"
+                                      Visibility="{Binding SaveButtonVisibility}">
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Delete}"
+                                    Command="{Binding DeleteCommand}"/>
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Save}"
+                                    Command="{Binding SaveCommand}"/>
+                        </ExtendedGrid>
+
+                        <Button Style="{StaticResource PrimaryButton}"
+                                Content="{StaticResource Edit}"
+                                Command="{Binding EditCommand}"
+                                Visibility="{Binding EditButtonVisibility}"/>
+                    </ExtendedGrid>
+
+                    <components:SettingsComponent/>
+                </ExtendedGrid>
+            </AnimatedScrollViewer>
+        </Loader>
+    </controls:PageTemplate>
+</controls:View>
