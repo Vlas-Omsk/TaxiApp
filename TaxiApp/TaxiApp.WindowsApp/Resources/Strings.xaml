@@ -54,6 +54,13 @@
     <system:String x:Key="AddressTo">Конечный адрес</system:String>
     <system:String x:Key="CreatedAt">Создан</system:String>
     <system:String x:Key="Comment">Комментарий</system:String>
+    <system:String x:Key="Reporting">Отчетность</system:String>
+    <system:String x:Key="PeriodBegin">Начало периода</system:String>
+    <system:String x:Key="PeriodEnd">Конец периода</system:String>
+    <system:String x:Key="Date">Дата</system:String>
+    <system:String x:Key="OrdersReport">Отчет по заказам</system:String>
+    <system:String x:Key="Report">Отчет</system:String>
+    <system:String x:Key="Print">Распечатать</system:String>
     
     <!-- FindResource calls -->
     <system:String x:Key="Tariffs">Тарифы</system:String>

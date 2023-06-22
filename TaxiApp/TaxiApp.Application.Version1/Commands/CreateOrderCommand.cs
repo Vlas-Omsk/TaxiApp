@@ -6,6 +6,7 @@ namespace TaxiApp.Application.Version1_0.Commands
     public sealed record CreateOrderCommand(
         int DriverId,
         int ClientId,
+        int TariffId,
         decimal Cost,
         string AddressFrom,
         string AddressTo,

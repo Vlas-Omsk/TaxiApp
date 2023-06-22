@@ -6,6 +6,7 @@ namespace TaxiApp.Application.Version1_0.Commands
         int Id,
         int? DriverId,
         int? ClientId,
+        int? TariffId,
         decimal? Cost,
         string AddressFrom,
         string AddressTo,

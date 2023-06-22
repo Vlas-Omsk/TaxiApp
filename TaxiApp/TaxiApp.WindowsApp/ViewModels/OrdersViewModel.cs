@@ -55,8 +55,8 @@ namespace TaxiApp.WindowsApp.ViewModels
             Orders = new FilteredCollection<OrderModel>(response.Value
                 .Select(x => new OrderModel(
                     x.Id,
-                    x.CreatedAt.ToString("D"),
-                    x.CreatedAt.ToString("T"),
+                    x.CreatedAt.ToLocalTime().ToString("D"),
+                    x.CreatedAt.ToLocalTime().ToString("T"),
                     x.DriverFullName?.ToString()
                 ))
                 .ToArray()

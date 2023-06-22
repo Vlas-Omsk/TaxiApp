@@ -13,6 +13,7 @@ namespace TaxiApp.Domain.Extensions
             services.AddScoped<TariffsService>();
             services.AddScoped<OrdersService>();
             services.AddScoped<ClientsService>();
+            services.AddScoped<ReportsService>();
         }
     }
 }

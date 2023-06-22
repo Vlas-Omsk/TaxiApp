@@ -6,7 +6,7 @@
         public int DriverId { get; set; }
         public DriverEntity Driver { get; set; }
         public int CarId { get; set; }
-        public CarEntity Car { get; set; }
+        //public CarEntity Car { get; set; }
         public string AddressFrom { get; set; }
         public string AddressTo { get; set; }
         public decimal Cost { get; set; }

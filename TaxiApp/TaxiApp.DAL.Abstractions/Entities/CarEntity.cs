@@ -11,5 +11,6 @@
         public string AdditionalInfo { get; set; }
         public ICollection<DriverEntity> Drivers { get; } = new List<DriverEntity>();
         public ICollection<CarTariffEntity> CarTariffs { get; } = new List<CarTariffEntity>();
+        //public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
     }
 }

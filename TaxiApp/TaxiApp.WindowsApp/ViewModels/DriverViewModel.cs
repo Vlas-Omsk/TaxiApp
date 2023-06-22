@@ -7,6 +7,7 @@ using TaxiApp.Application.Version1_0.Commands;
 using TaxiApp.Application.Version1_0.Queries;
 using TaxiApp.DataTypes;
 using TaxiApp.WindowsApp.Services;
+using TaxiApp.WindowsApp.Views;
 
 namespace TaxiApp.WindowsApp.ViewModels
 {
@@ -156,6 +157,12 @@ namespace TaxiApp.WindowsApp.ViewModels
         private void EditPhoto()
         {
 
+        }
+
+        [RelayCommand]
+        private void OpenReport()
+        {
+            _navigationService.NavigateTo(new DriverReportView(_id));
         }
     }
 }

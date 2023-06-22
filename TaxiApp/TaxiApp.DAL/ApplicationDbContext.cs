@@ -153,10 +153,10 @@ namespace TaxiApp.DAL.SqlServer
                     .HasColumnType("money")
                     .IsRequired();
                 entity.Property(e => e.CreatedAt)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .IsRequired();
                 entity.Property(e => e.CompleatedAt)
-                    .HasColumnType("date");
+                    .HasColumnType("datetime");
                 entity.Property(e => e.ClientId)
                     .IsRequired();
 
@@ -167,6 +167,14 @@ namespace TaxiApp.DAL.SqlServer
                 entity.HasOne(d => d.Client).WithMany(p => p.Orders)
                     .HasForeignKey(d => d.ClientId)
                     .HasConstraintName("FK_OrderClientId_ClientId");
+
+                //entity.HasOne(d => d.Car).WithMany(p => p.Orders)
+                //    .HasForeignKey(d => d.CarId)
+                //    .HasConstraintName("FK_OrderCarId_CarId");
+
+                entity.HasOne(d => d.Tariff).WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.TariffId)
+                    .HasConstraintName("FK_OrderTariffId_TariffId");
             });
 
             modelBuilder.Entity<ClientEntity>(entity =>

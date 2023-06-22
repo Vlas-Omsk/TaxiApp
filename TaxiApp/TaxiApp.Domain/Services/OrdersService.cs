@@ -21,6 +21,7 @@ namespace TaxiApp.Domain.Services
         public async Task<OrderEntity> Create(
             int driverId,
             int clientId,
+            int tariffId,
             decimal cost,
             string addressFrom,
             string addressTo,
@@ -31,6 +32,7 @@ namespace TaxiApp.Domain.Services
             {
                 DriverId = driverId,
                 ClientId = clientId,
+                TariffId = tariffId,
                 Cost = cost,
                 AddressFrom = addressFrom,
                 AddressTo = addressTo,
@@ -48,6 +50,7 @@ namespace TaxiApp.Domain.Services
             int id,
             int? driverId,
             int? clientId,
+            int? tariffId,
             decimal? cost,
             string addressFrom,
             string addressTo,
@@ -60,6 +63,8 @@ namespace TaxiApp.Domain.Services
                 order.DriverId = driverId.Value;
             if (clientId.HasValue)
                 order.ClientId = clientId.Value;
+            if (tariffId.HasValue)
+                order.TariffId = tariffId.Value;
             if (cost.HasValue)
                 order.Cost = cost.Value;
             if (addressFrom != null)

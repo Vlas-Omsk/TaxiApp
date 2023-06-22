@@ -23,6 +23,7 @@ namespace TaxiApp.Application.Version1_0.Handlers.Orders
                 request.Id,
                 request.DriverId,
                 request.ClientId,
+                request.TariffId,
                 request.Cost,
                 request.AddressFrom,
                 request.AddressTo,

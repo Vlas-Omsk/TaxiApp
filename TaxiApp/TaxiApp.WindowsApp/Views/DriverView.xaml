@@ -59,10 +59,11 @@
                                     IsReadOnly="{Binding IsReadOnly}"
                                     Text="{Binding AdditionalInfo}"/>
 
-                    <ExtendedGrid Columns="[*],auto">
+                    <ExtendedGrid>
                         <ExtendedGrid Columns="auto,[5],auto"
                                       AutoPositioning="True"
-                                      Visibility="{Binding SaveButtonVisibility}">
+                                      Visibility="{Binding SaveButtonVisibility}"
+                                      HorizontalAlignment="Right">
                             <Button Style="{StaticResource PrimaryButton}"
                                     Content="{StaticResource Delete}"
                                     Command="{Binding DeleteCommand}"/>
@@ -71,10 +72,17 @@
                                     Command="{Binding SaveCommand}"/>
                         </ExtendedGrid>
 
-                        <Button Style="{StaticResource PrimaryButton}"
-                                Content="{StaticResource Edit}"
-                                Command="{Binding EditCommand}"
-                                Visibility="{Binding EditButtonVisibility}"/>
+                        <ExtendedGrid Columns="auto,[*],auto"
+                                      AutoPositioning="True"
+                                      Visibility="{Binding EditButtonVisibility}">
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Report}"
+                                    Command="{Binding OpenReportCommand}"/>
+                            
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{StaticResource Edit}"
+                                    Command="{Binding EditCommand}"/>
+                        </ExtendedGrid>
                     </ExtendedGrid>
 
                     <components:SettingsComponent/>

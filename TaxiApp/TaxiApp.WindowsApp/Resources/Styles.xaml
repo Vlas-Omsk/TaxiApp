@@ -65,6 +65,12 @@
         <Setter Property="FontSize" Value="21"/>
     </Style>
 
+    <Style x:Key="Header4"
+           TargetType="Label" 
+           BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
     <Style x:Key="ClearTextBox"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Type TextBox}}">
@@ -214,6 +220,34 @@
                                Margin="1 0 0 0"
                                Visibility="{TemplateBinding PlaceholderVisibility}"/>
                     </ExtendedGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RoundedPlaceholderInput"
+           TargetType="controls:PlaceholderInput"
+           BasedOn="{StaticResource {x:Type controls:PlaceholderInput}}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:PlaceholderInput">
+                    <Border BorderThickness="1"
+                            BorderBrush="{DynamicResource BrushForegroundLight}"
+                            CornerRadius="10"
+                            Padding="10">
+                        <ExtendedGrid>
+                            <TextBox x:Name="PART_Input"
+                                     Style="{StaticResource ClearTextBox}"
+                                     FontSize="13"
+                                     Text="{Binding Text, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="{TemplateBinding Placeholder}"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource BrushForegroundLight}"
+                                   IsHitTestVisible="False"
+                                   Margin="1 0 0 0"
+                                   Visibility="{TemplateBinding PlaceholderVisibility}"/>
+                        </ExtendedGrid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -425,6 +459,40 @@
                             </ExtendedGrid>
                         </AnimatedScrollViewer>
                     </ExtendedGrid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:GraphPresenter}">
+        <Setter Property="ClipToBounds" Value="False"/>
+    </Style>
+
+    <Style TargetType="{x:Type controls:Graph}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Graph}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="{Binding ViewportSize.Width, ElementName=PART_Presenter}"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:GraphPresenter x:Name="PART_Presenter"
+                                        Grid.ColumnSpan="2"/>
+                        <ScrollBar Grid.Row="1"
+                                   Grid.Column="1"
+                                   Maximum="{Binding ScrollWidth, ElementName=PART_Presenter}"
+                                   Minimum="0"
+                                   Value="{Binding OffsetX, ElementName=PART_Presenter}"
+                                   Orientation="Horizontal"
+                                   ViewportSize="{Binding ViewportSize.Width, ElementName=PART_Presenter}"/>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

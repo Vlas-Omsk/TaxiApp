@@ -14,5 +14,6 @@
         public ICollection<CarTariffEntity> CarTariffs { get; } = new List<CarTariffEntity>();
         public ICollection<DriverTariffEntity> DriverTariffs { get; } = new List<DriverTariffEntity>();
         public ICollection<TariffAdditionalServiceEntity> TariffAdditionalServices { get; } = new List<TariffAdditionalServiceEntity>();
+        public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
     }
 }

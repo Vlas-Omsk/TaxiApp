@@ -64,6 +64,7 @@ namespace TaxiApp.WindowsApp.ViewModels
         [NotifyPropertyChangedFor(nameof(EditPhotoButtonVisibility))]
         [NotifyPropertyChangedFor(nameof(Id))]
         [NotifyPropertyChangedFor(nameof(CreatedAtText))]
+        [NotifyPropertyChangedFor(nameof(IsReadOnly))]
         private EditType _editType;
 
         public bool IsReadOnly => EditType == EditType.View;
@@ -172,7 +173,7 @@ namespace TaxiApp.WindowsApp.ViewModels
                 Cost = response.Value.Cost;
                 AddressFrom = response.Value.AddressFrom;
                 AddressTo = response.Value.AddressTo;
-                CreatedAt = response.Value.CreatedAt;
+                CreatedAt = response.Value.CreatedAt.ToLocalTime();
                 Comment = response.Value.Comment;
             }
 
@@ -200,6 +201,24 @@ namespace TaxiApp.WindowsApp.ViewModels
                 return;
             }
 
+            if (Tariff == null)
+            {
+                MessageBox.Show("Тариф не выбран");
+                return;
+            }
+
+            if (AddressTo == null)
+            {
+                MessageBox.Show("Конечный адрес не может быть пустым");
+                return;
+            }
+
+            if (AddressFrom == null)
+            {
+                MessageBox.Show("Начальный адрес не может быть пустым");
+                return;
+            }
+
             LoadingState = LoadingState.Loading;
 
             if (EditType == EditType.Create)
@@ -207,6 +226,7 @@ namespace TaxiApp.WindowsApp.ViewModels
                 var response = await _apiService.Send(new CreateOrderCommand(
                     Driver.Id,
                     Client.Id,
+                    Tariff.Id,
                     Cost,
                     AddressFrom,
                     AddressTo,
@@ -219,6 +239,9 @@ namespace TaxiApp.WindowsApp.ViewModels
                     LoadingState = LoadingState.Failed;
                     return;
                 }
+
+                IdInternal = response.Value.Id;
+                CreatedAt = response.Value.CreatedAt;
             }
             else if (EditType == EditType.Edit)
             {
@@ -226,6 +249,7 @@ namespace TaxiApp.WindowsApp.ViewModels
                     IdInternal,
                     Driver.Id,
                     Client.Id,
+                    Tariff.Id,
                     Cost,
                     AddressFrom,
                     AddressTo,

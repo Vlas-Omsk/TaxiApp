@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxiApp.DAL.SqlServer;
 
@@ -11,9 +12,11 @@ using TaxiApp.DAL.SqlServer;
 namespace TaxiApp.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230622211146_AddedColumnsToOrder")]
+    partial class AddedColumnsToOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,13 +218,13 @@ namespace TaxiApp.DAL.SqlServer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CompleatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("money");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<int>("DriverId")
                         .HasColumnType("int");

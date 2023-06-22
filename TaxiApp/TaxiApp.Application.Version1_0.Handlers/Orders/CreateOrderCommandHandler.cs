@@ -23,6 +23,7 @@ namespace TaxiApp.Application.Version1_0.Handlers.Orders
             var order = await _ordersService.Create(
                 request.DriverId,
                 request.ClientId,
+                request.TariffId,
                 request.Cost,
                 request.AddressFrom,
                 request.AddressTo,
