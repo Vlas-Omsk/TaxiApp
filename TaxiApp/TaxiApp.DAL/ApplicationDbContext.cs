@@ -30,11 +30,9 @@ namespace TaxiApp.DAL.SqlServer
 
                 entity.Property(e => e.Login)
                     .HasMaxLength(40);
-                entity.Property(e => e.Password)
+                entity.Property(e => e.PasswordHash)
                     .IsRequired()
-                    .HasConversion<PasswordConverter>()
-                    .HasMaxLength(32)
-                    .HasColumnName("PasswordHash");
+                    .HasMaxLength(32);
                 entity.Property(e => e.Role)
                     .IsRequired()
                     .HasConversion<string>()

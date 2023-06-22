@@ -7,6 +7,7 @@ using TaxiApp.WindowsApp.Models;
 using TaxiApp.WindowsApp.Services;
 using System;
 using System.Linq;
+using TaxiApp.WindowsApp.Views;
 
 namespace TaxiApp.WindowsApp.ViewModels
 {
@@ -67,12 +68,12 @@ namespace TaxiApp.WindowsApp.ViewModels
         [RelayCommand]
         private void Open(UserModel user)
         {
-            //_navigationService.NavigateTo(new UserView(user.Login));
+            _navigationService.NavigateTo(new UserView(user.Login));
         }
 
         partial void OnFilterChanged(string value)
         {
-            Users.Filter = x => x.FulllName.ToString().Contains(value, StringComparison.OrdinalIgnoreCase);
+            Users.Filter = x => x.FullName.ToString().Contains(value, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

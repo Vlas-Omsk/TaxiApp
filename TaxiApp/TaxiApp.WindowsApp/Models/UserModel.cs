@@ -6,17 +6,17 @@ namespace TaxiApp.WindowsApp.Models
     {
         public UserModel(
             string login,
-            FullName fulllName,
+            FullName fullName,
             string role
         )
         {
             Login = login;
-            FulllName = fulllName;
+            FullName = fullName;
             Role = role;
         }
 
         public string Login { get; }
-        public FullName FulllName { get; }
+        public FullName FullName { get; }
         public string Role { get; }
     }
 }
