@@ -46,7 +46,7 @@ namespace TaxiApp.WindowsApp.ViewModels
         {
             if (PeriodBegin.Date >= PeriodEnd.Date)
             {
-                MessageBox.Show("Конец периода не может быть меньше нача");
+                MessageBox.Show("Конец периода не может быть меньше начала");
 
                 return;
             }
