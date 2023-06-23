@@ -20,7 +20,6 @@
                        Margin="20 0 5 0"/>
 
                 <controls:PlaceholderInput Style="{StaticResource RoundedPlaceholderInput}"
-                                           Placeholder="{StaticResource Date}"
                                            Text="{Binding PeriodBegin}"/>
             </ExtendedGrid>
             
@@ -31,7 +30,6 @@
                        Margin="20 0 5 0"/>
 
                 <controls:PlaceholderInput Style="{StaticResource RoundedPlaceholderInput}"
-                                           Placeholder="{StaticResource Date}"
                                            Text="{Binding PeriodEnd}"/>
             </ExtendedGrid>
 
