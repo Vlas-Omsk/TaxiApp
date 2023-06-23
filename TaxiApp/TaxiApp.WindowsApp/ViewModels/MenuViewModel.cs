@@ -30,11 +30,11 @@ namespace TaxiApp.WindowsApp.ViewModels
             switch (sessionService.User.Role)
             {
                 case UserRole.Director:
-                    items.Add(new MenuItemModel(
-                        null,
-                        resourcesService.FindString("Reports"),
-                        null
-                    ));
+                    //items.Add(new MenuItemModel(
+                    //    null,
+                    //    resourcesService.FindString("Reports"),
+                    //    null
+                    //));
                     break;
                 case UserRole.Administrator:
                     items.Add(new MenuItemModel(
@@ -52,11 +52,11 @@ namespace TaxiApp.WindowsApp.ViewModels
                         resourcesService.FindString("Drivers"),
                         OpenDriversCommand
                     ));
-                    items.Add(new MenuItemModel(
-                        null,
-                        resourcesService.FindString("Report"),
-                        null
-                    ));
+                    //items.Add(new MenuItemModel(
+                    //    null,
+                    //    resourcesService.FindString("Report"),
+                    //    null
+                    //));
                     items.Add(new MenuItemModel(
                         new Images.Report(),
                         resourcesService.FindString("Users"),
@@ -69,11 +69,11 @@ namespace TaxiApp.WindowsApp.ViewModels
                         resourcesService.FindString("ActiveDrivers"),
                         OpenActiveDriversCommand
                     ));
-                    items.Add(new MenuItemModel(
-                        null,
-                        resourcesService.FindString("Report"),
-                        null
-                    ));
+                    //items.Add(new MenuItemModel(
+                    //    null,
+                    //    resourcesService.FindString("Report"),
+                    //    null
+                    //));
                     break;
             }
 
@@ -84,11 +84,11 @@ namespace TaxiApp.WindowsApp.ViewModels
                     resourcesService.FindString("Orders"),
                     OpenOrdersCommand
                 ));
-                items.Add(new MenuItemModel(
-                    null,
-                    resourcesService.FindString("Clients"),
-                    null
-                ));
+                //items.Add(new MenuItemModel(
+                //    null,
+                //    resourcesService.FindString("Clients"),
+                //    null
+                //));
             }
 
             Items = items.ToArray();
