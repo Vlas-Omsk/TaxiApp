@@ -6,6 +6,7 @@
         AnonymouseAccessNotAllowed,
         UnableToChangeCurrentEmployee,
         CarNotFound,
-        DriverNotFound
+        DriverNotFound,
+        UnknownError
     }
 }

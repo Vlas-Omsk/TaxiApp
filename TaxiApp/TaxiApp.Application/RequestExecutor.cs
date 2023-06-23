@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TaxiApp.Application.Abstractions;
+using TaxiApp.DataTypes;
 
 namespace TaxiApp.Application
 {
@@ -22,7 +23,16 @@ namespace TaxiApp.Application
         {
             _logger.LogInformation("Executing request: {name}", request.GetType().Name);
 
-            var response = await ExecuteInternal<IRequest<TResult>, Response<TResult>>(request);
+            Response<TResult> response;
+
+            try
+            {
+                response = await ExecuteInternal<IRequest<TResult>, Response<TResult>>(request);
+            }
+            catch (Exception ex)
+            {
+                response = Results.Fail<TResult>(new Error(ErrorType.UnknownError, ex.ToString()));
+            }
 
             _logger.LogInformation(
                 "Executed response: {name}, Success: {success}, ErrorType: {errorType}, ErrorMessage: {errorMessage}",
